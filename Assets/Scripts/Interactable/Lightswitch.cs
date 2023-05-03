@@ -83,7 +83,7 @@ public class Lightswitch : NetworkBehaviour
             isLightOn = true;
             Debug.Log("Light On");  
     }
-
+    
     void TurnOff()
     {
             luz.gameObject.SetActive(false);

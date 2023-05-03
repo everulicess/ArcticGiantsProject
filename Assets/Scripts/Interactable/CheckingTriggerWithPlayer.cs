@@ -15,7 +15,8 @@ public class CheckingTriggerWithPlayer : NetworkBehaviour
         networkObject = GetComponent<NetworkObject>();
         if (isOnTrigger && Input.GetKeyDown(KeyCode.F))
         {
-            Runner.Despawn(networkObject);
+            
+            //Runner.Despawn(networkObject);
             // IDespawned();
             Debug.Log("Package despawned");
         }
