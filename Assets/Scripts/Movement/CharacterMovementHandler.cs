@@ -4,7 +4,12 @@ using UnityEngine;
 using Fusion;
 
 public class CharacterMovementHandler : NetworkBehaviour
-{ 
+{
+
+    [Header("Animations")]
+    public Animator playerAnimator;
+    float walkSpeed = 0f;
+
     //Other components
     NetworkCharacterControllerPrototypeCustom networkCharacterControllerPrototypeCustom;
     Camera localCamera;
@@ -48,13 +53,34 @@ public class CharacterMovementHandler : NetworkBehaviour
                 networkCharacterControllerPrototypeCustom.Jump();
             }
 
-            //Check if we are fallen off the world
-            CheckFallRespawn();
+            Vector2 walkVector = new Vector2(networkCharacterControllerPrototypeCustom.Velocity.x, networkCharacterControllerPrototypeCustom.Velocity.z);
+            walkVector.Normalize();
+
+            walkSpeed = Mathf.Lerp(walkSpeed, Mathf.Clamp01(walkVector.magnitude), Runner.DeltaTime * 5);
+
+            playerAnimator.SetFloat("WalkSpeed", walkSpeed);
+            
 
             if (networkInputData.isInteractButtonPressed)
             {
                 isPlayerInteracting = true;
             }
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                Debug.Log("Dance");
+                playerAnimator.SetBool("IsDancePlay", true);
+            }
+            else
+            {
+                playerAnimator.SetBool("IsDancePlay", false);
+
+            }
+
+
+            //Check if we are fallen off the world
+            CheckFallRespawn();
+
+            
         }
     }
 

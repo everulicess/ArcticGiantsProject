@@ -7,7 +7,7 @@ public class CharacterInputHandler : MonoBehaviour
     Vector2 moveInputVector = Vector2.zero;
     Vector2 viewInputVector = Vector2.zero;
     bool isJumpButtonPressed = false;
-    public bool isInteractButtonPressed = false;
+    bool isInteractButtonPressed = false;
 
     //other component
     LocalCameraHandler localCameraHandler;
@@ -32,7 +32,7 @@ public class CharacterInputHandler : MonoBehaviour
 
         //view Input
         viewInputVector.x = Input.GetAxis("Mouse X");
-        viewInputVector.y = Input.GetAxis("Mouse Y")*-1; //Invert the mouse look
+        viewInputVector.y = Input.GetAxis("Mouse Y") *-1; //Invert the mouse look
 
         //Move Input
         moveInputVector.x = Input.GetAxis("Horizontal");
