@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DogMovement : MonoBehaviour
 {
-    float movementSpeed = 4f;
-    float rotationSpeed = 100f;
+    float movementSpeed = 9f;
+    float rotationSpeed = 75f;
 
     private bool isWandering = false;
     private bool isRotatingLeft = false;
@@ -47,7 +47,7 @@ public class DogMovement : MonoBehaviour
         int rotationTime = Random.Range(1, 2);
         int rotateWait = Random.Range(1, 3);
         int rotateDirection = Random.Range(1, 2);
-        int walkTime = Random.Range(1, 10);
+        int walkTime = Random.Range(1, 3);
         int walkWait = Random.Range(1, 3);
 
         isWandering = true;
