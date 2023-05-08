@@ -65,6 +65,10 @@ public class CharacterMovementHandler : NetworkBehaviour
             {
                 isPlayerInteracting = true;
             }
+            else
+            {
+                isPlayerInteracting = false;
+            }
             if (Input.GetKeyDown(KeyCode.Y))
             {
                 Debug.Log("Dance");

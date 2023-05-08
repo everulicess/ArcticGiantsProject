@@ -6,7 +6,7 @@ public static class Utils
 {
     public static Vector3 GetRandomSpawnPoint()
     {
-        return new Vector3(Random.Range(6,12), 4, Random.Range(1, 5));
+        return new Vector3(Random.Range(-3,-9), 5, Random.Range(-8, -5));
 
     }
 

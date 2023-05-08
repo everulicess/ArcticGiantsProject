@@ -18,6 +18,13 @@ public class Lightswitch : NetworkBehaviour
     
     public override void FixedUpdateNetwork()
     {
+        
+    }
+
+   
+    // Update is called once per frame
+    void Update()
+    {
         if (isNear)
         {
             if (!characterMovementHandler)
@@ -48,15 +55,9 @@ public class Lightswitch : NetworkBehaviour
                 }
             }
         }
-    }
 
-   
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
-    //Intenta usar esto en el script de Player, en la parte de hasstateauthority a lo mejor funciona
+    
     void OnTriggerEnter(Collider other)
     {
         player = other;
@@ -79,14 +80,18 @@ public class Lightswitch : NetworkBehaviour
 
     void TurnOn()
     {
-            luz.gameObject.SetActive(true);
-            isLightOn = true;
+            //luz.gameObject.SetActive(true);
+        luz.GetComponent<Light>().enabled = true;
+        //luz.enabled = true;
+        isLightOn = true;
             Debug.Log("Light On");  
     }
     
     void TurnOff()
     {
-            luz.gameObject.SetActive(false);
+            //luz.gameObject.SetActive(false);
+            luz.GetComponent<Light>().enabled = false;
+            //luz.enabled = false;
             isLightOn = false;
             Debug.Log("Light Off");    
     }
