@@ -35,7 +35,7 @@ public class PickUpObject : MonoBehaviour
         o.transform.position = Vector3.Lerp(o.transform.position, mainCamera.transform.position + mainCamera.transform.forward * distance, Time.deltaTime * smooth);
 
     }
-    void PickUp()
+    public void PickUp()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {

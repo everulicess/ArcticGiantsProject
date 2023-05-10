@@ -7,7 +7,8 @@ public class CharacterInputHandler : MonoBehaviour
     Vector2 moveInputVector = Vector2.zero;
     Vector2 viewInputVector = Vector2.zero;
     bool isJumpButtonPressed = false;
-    bool isInteractButtonPressed = false;
+    bool isFInteractButtonPressed = false;
+    bool isEInteractButtonPressed = false;
 
     //other component
     LocalCameraHandler localCameraHandler;
@@ -43,10 +44,15 @@ public class CharacterInputHandler : MonoBehaviour
         {
             isJumpButtonPressed = true;
         }
-        //Interact
+        //Interact "F"
         if(Input.GetKeyDown(KeyCode.F))
         {
-            isInteractButtonPressed = true;
+            isFInteractButtonPressed = true;
+        } 
+        //Interact "E"
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            isEInteractButtonPressed = true;
         }
 
         //Set View
@@ -67,11 +73,14 @@ public class CharacterInputHandler : MonoBehaviour
         networkInputData.isJumpButtonPressed = isJumpButtonPressed;
 
         //Interact data Button "F"
-        networkInputData.isInteractButtonPressed = isInteractButtonPressed;
+        networkInputData.isFInteractButtonPressed = isFInteractButtonPressed;
 
+        //Interact Data "E"
+        networkInputData.isEInteractButtonPressed = isEInteractButtonPressed;
         //Reset variables now that we have read their states
         isJumpButtonPressed = false;
-        isInteractButtonPressed = false;
+        isFInteractButtonPressed = false;
+        isEInteractButtonPressed = false;
         
 
         return networkInputData;

@@ -13,6 +13,7 @@ public class CharacterMovementHandler : NetworkBehaviour
     //Other components
     NetworkCharacterControllerPrototypeCustom networkCharacterControllerPrototypeCustom;
     Camera localCamera;
+    PickUpObject pickUpObject;
 
     //Variables
     public bool isPlayerInteracting = false;
@@ -21,6 +22,7 @@ public class CharacterMovementHandler : NetworkBehaviour
     {
         networkCharacterControllerPrototypeCustom = GetComponent<NetworkCharacterControllerPrototypeCustom>();
         localCamera = GetComponentInChildren<Camera>();
+        pickUpObject = GetComponent<PickUpObject>();
     }
     // Start is called before the first frame update
     void Start()
@@ -52,6 +54,11 @@ public class CharacterMovementHandler : NetworkBehaviour
             {
                 networkCharacterControllerPrototypeCustom.Jump();
             }
+            //PickUp
+            if (networkInputData.isEInteractButtonPressed)
+            {
+                pickUpObject.PickUp();
+            }
 
             Vector2 walkVector = new Vector2(networkCharacterControllerPrototypeCustom.Velocity.x, networkCharacterControllerPrototypeCustom.Velocity.z);
             walkVector.Normalize();
@@ -61,7 +68,7 @@ public class CharacterMovementHandler : NetworkBehaviour
             playerAnimator.SetFloat("WalkSpeed", walkSpeed);
             
 
-            if (networkInputData.isInteractButtonPressed)
+            if (networkInputData.isFInteractButtonPressed)
             {
                 isPlayerInteracting = true;
             }
@@ -72,6 +79,7 @@ public class CharacterMovementHandler : NetworkBehaviour
             if (Input.GetKey(KeyCode.Y))
             {
                 Debug.Log("Dance");
+                playerAnimator.SetFloat("WalkSpeed", 0);
                 playerAnimator.SetBool("IsDancePlay", true);
             }
             else
