@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PickUpObject : MonoBehaviour
 {
-    public GameObject mainCamera;
+    Camera mainCamera;
     bool isCarrying;
     GameObject carriedObject;
-    float distance = 1f;
+    float distance = 2f;
     float smooth = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        //mainCamera = GameObject.FindWithTag("MainCamera");
+        mainCamera = GetComponentInChildren<Camera>();
     }
 
     // Update is called once per frame
