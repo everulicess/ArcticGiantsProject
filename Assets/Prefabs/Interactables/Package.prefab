@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 326770768}
   - component: {fileID: 326770770}
   - component: {fileID: 326770769}
+  - component: {fileID: 1423851123729544589}
   m_Layer: 0
   m_Name: Package
   m_TagString: Package
@@ -132,6 +133,18 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
+--- !u!114 &1423851123729544589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5415213338289320072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd8332a7b45496498a9b8b867a29b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5415213339363543670
 PrefabInstance:
   m_ObjectHideFlags: 0

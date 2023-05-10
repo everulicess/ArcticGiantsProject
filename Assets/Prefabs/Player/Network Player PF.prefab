@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 7848257691775766972}
   - component: {fileID: 974565508140183461}
   - component: {fileID: -7825073774232185798}
+  - component: {fileID: 5139792602858336535}
   m_Layer: 0
   m_Name: Network Player PF
   m_TagString: Player
@@ -209,7 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   Animator: {fileID: 7882518357862243160}
-  TotalWords: 1
+  TotalWords: 2
   SyncSettings: 79
   FloatAccuracy:
     _value: 0
@@ -223,8 +224,21 @@ MonoBehaviour:
     _value: 0
     _inverse: 0
     _hash: -814817977
-  StateHashes: 000000008a18fce4b9abd9d3
+  StateHashes: 000000008a18fce4b9abd9d36bd28ad9e99dc65c
   TriggerHashes: 00000000
+--- !u!114 &5139792602858336535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5513665416781198574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: affc6ff25fb2ec74aa48e2aa32139291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 5513665417147977501}
 --- !u!1 &5513665417147977501
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +550,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5513665417147977502}
     m_Modifications:
+    - target: {fileID: 924789658, guid: 3b7c38803df3f464fbbb10cff6a586c7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199839677, guid: 3b7c38803df3f464fbbb10cff6a586c7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3709234717388308291, guid: 3b7c38803df3f464fbbb10cff6a586c7,
         type: 3}
       propertyPath: m_Pivot.x
