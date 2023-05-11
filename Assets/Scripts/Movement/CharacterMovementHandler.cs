@@ -57,7 +57,7 @@ public class CharacterMovementHandler : NetworkBehaviour
             //PickUp
             if (networkInputData.isEInteractButtonPressed)
             {
-                pickUpObject.PickUp();
+                pickUpObject.Update();
             }
 
             Vector2 walkVector = new Vector2(networkCharacterControllerPrototypeCustom.Velocity.x, networkCharacterControllerPrototypeCustom.Velocity.z);
@@ -79,7 +79,6 @@ public class CharacterMovementHandler : NetworkBehaviour
             if (Input.GetKey(KeyCode.Y))
             {
                 Debug.Log("Dance");
-                playerAnimator.SetFloat("WalkSpeed", 0);
                 playerAnimator.SetBool("IsDancePlay", true);
             }
             else
