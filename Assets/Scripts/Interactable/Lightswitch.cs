@@ -7,29 +7,15 @@ using System;
 public class Lightswitch : NetworkBehaviour
 {
     public NetworkObject luz;
-    [Networked]
-    public bool isLightOn { get; set; } = true;
+    CharacterMovementHandler characterMovementHandler;
+
     bool isNear = false;
     bool isInteracting = false;
     Collider player;
 
-
-    CharacterMovementHandler characterMovementHandler;
-
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    void TurnOnRPC()
-    {
-        luz.GetComponent<Light>().enabled = true;
-        isLightOn = true;
-        Debug.Log("Light On");
-    }
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    void TurnOffRPC()
-    {
-        luz.GetComponent<Light>().enabled = false;
-        isLightOn = false;
-        Debug.Log("Light Off");
-    }
+    [Networked]
+    public bool isLightOn { get; set; } = true;
+   
 
     // Update is called once per frame
     void Update()
@@ -64,9 +50,7 @@ public class Lightswitch : NetworkBehaviour
                 }
             }
         }
-
     }
-
     void OnTriggerEnter(Collider other)
     {
         player = other;
@@ -76,7 +60,6 @@ public class Lightswitch : NetworkBehaviour
             Debug.Log("Player is near");
         }
     }
-
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -85,6 +68,20 @@ public class Lightswitch : NetworkBehaviour
             isNear = false;
             Debug.Log("Player is away");
         }
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    void TurnOnRPC()
+    {
+        luz.GetComponent<Light>().enabled = true;
+        isLightOn = true;
+        Debug.Log("Light On");
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    void TurnOffRPC()
+    {
+        luz.GetComponent<Light>().enabled = false;
+        isLightOn = false;
+        Debug.Log("Light Off");
     }
 
 }

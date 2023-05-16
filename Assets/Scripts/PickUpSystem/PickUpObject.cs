@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
 public class PickUpObject : MonoBehaviour
 {
@@ -13,12 +14,13 @@ public class PickUpObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera = GetComponentInChildren<Camera>();
+        
     }
 
     // Update is called once per frame
     public void Update()
     {
+        mainCamera = GetComponentInChildren<Camera>();
         if (isCarrying)
         {
             Carry(carriedObject);
@@ -26,7 +28,7 @@ public class PickUpObject : MonoBehaviour
         }
         else
         {
-            PickUp();
+            PickUpRPC();
         }
     }
 
@@ -35,7 +37,8 @@ public class PickUpObject : MonoBehaviour
         o.transform.position = Vector3.Lerp(o.transform.position, mainCamera.transform.position + mainCamera.transform.forward * distance, Time.deltaTime * smooth);
 
     }
-    public void PickUp()
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void PickUpRPC()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -63,11 +66,11 @@ public class PickUpObject : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            DropObject();
+            DropObjectRPC();
         }
     }
-
-    void DropObject()
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    void DropObjectRPC()
     {
         isCarrying = false;
         carriedObject.GetComponent<Rigidbody>().isKinematic = false;
