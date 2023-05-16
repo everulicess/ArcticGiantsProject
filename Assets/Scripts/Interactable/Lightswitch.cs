@@ -19,22 +19,17 @@ public class Lightswitch : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.All)]
     void TurnOnRPC()
     {
-        //luz.gameObject.SetActive(true);
         luz.GetComponent<Light>().enabled = true;
-        //luz.enabled = true;
         isLightOn = true;
         Debug.Log("Light On");
     }
     [Rpc(RpcSources.All, RpcTargets.All)]
     void TurnOffRPC()
     {
-        //luz.gameObject.SetActive(false);
         luz.GetComponent<Light>().enabled = false;
-        //luz.enabled = false;
         isLightOn = false;
         Debug.Log("Light Off");
     }
-
 
     // Update is called once per frame
     void Update()
