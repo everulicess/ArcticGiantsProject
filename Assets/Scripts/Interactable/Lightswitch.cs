@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 using System;
+using TMPro;
 
 public class Lightswitch : NetworkBehaviour
 {
@@ -13,10 +14,14 @@ public class Lightswitch : NetworkBehaviour
     bool isInteracting = false;
     Collider player;
 
+    public TextMeshPro interactText;
     [Networked]
     public bool isLightOn { get; set; } = true;
-   
 
+    private void Start()
+    {
+        interactText.enabled = false;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -56,6 +61,7 @@ public class Lightswitch : NetworkBehaviour
         player = other;
         if (other.CompareTag("Player"))
         {
+            interactText.enabled = true;
             isNear = true;
             Debug.Log("Player is near");
         }
@@ -64,6 +70,7 @@ public class Lightswitch : NetworkBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            interactText.enabled = false;
             characterMovementHandler = null;
             isNear = false;
             Debug.Log("Player is away");

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Fusion;
 
 public class PickUpObject : MonoBehaviour
 {
@@ -11,24 +10,26 @@ public class PickUpObject : MonoBehaviour
     float distance = 2f;
     float smooth = 5f;
 
+    ShowPrompt showPrompt;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        mainCamera = GetComponentInChildren<Camera>();
     }
 
     // Update is called once per frame
     public void Update()
     {
-        mainCamera = GetComponentInChildren<Camera>();
         if (isCarrying)
         {
+            
             Carry(carriedObject);
             CheckDrop();
         }
         else
         {
-            PickUpRPC();
+            PickUp();
         }
     }
 
@@ -37,8 +38,8 @@ public class PickUpObject : MonoBehaviour
         o.transform.position = Vector3.Lerp(o.transform.position, mainCamera.transform.position + mainCamera.transform.forward * distance, Time.deltaTime * smooth);
 
     }
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    public void PickUpRPC()
+
+    public void PickUp()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -66,14 +67,38 @@ public class PickUpObject : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            DropObjectRPC();
+            DropObject();
         }
     }
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    void DropObjectRPC()
+
+    void DropObject()
     {
+        showPrompt.stringText = "Pick Up [E]";
+        showPrompt.isCarrying = false;
         isCarrying = false;
         carriedObject.GetComponent<Rigidbody>().isKinematic = false;
         carriedObject = null;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Package"))
+        {
+            showPrompt = other.GetComponent<ShowPrompt>();
+            showPrompt.stringText = "Pick Up [E]";
+
+            if (isCarrying)
+            {
+                showPrompt.isCarrying = true;
+                showPrompt.stringText = "Drop[E]";
+                Debug.Log("change to drop E");
+            }
+            else
+            {
+                
+                showPrompt.stringText = "Pick Up [E]";
+                Debug.Log("change to Pick Up E");
+            }
+           
+        }
     }
 }
