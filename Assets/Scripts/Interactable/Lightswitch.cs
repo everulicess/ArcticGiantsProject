@@ -7,7 +7,8 @@ using System;
 public class Lightswitch : NetworkBehaviour
 {
     public NetworkObject luz;
-    NetworkBool isLightOn;
+    [Networked]
+    public bool isLightOn { get; set; } = true;
     bool isNear = false;
     bool isInteracting = false;
     Collider player;
@@ -15,13 +16,26 @@ public class Lightswitch : NetworkBehaviour
 
     CharacterMovementHandler characterMovementHandler;
 
-    
-    public override void FixedUpdateNetwork()
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    void TurnOnRPC()
     {
-        
+        //luz.gameObject.SetActive(true);
+        luz.GetComponent<Light>().enabled = true;
+        //luz.enabled = true;
+        isLightOn = true;
+        Debug.Log("Light On");
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    void TurnOffRPC()
+    {
+        //luz.gameObject.SetActive(false);
+        luz.GetComponent<Light>().enabled = false;
+        //luz.enabled = false;
+        isLightOn = false;
+        Debug.Log("Light Off");
     }
 
-   
+
     // Update is called once per frame
     void Update()
     {
@@ -47,17 +61,17 @@ public class Lightswitch : NetworkBehaviour
             {
                 if (isLightOn)
                 {
-                    TurnOff();
+                    TurnOffRPC();
                 }
                 else
                 {
-                    TurnOn();
+                    TurnOnRPC();
                 }
             }
         }
 
     }
-    
+
     void OnTriggerEnter(Collider other)
     {
         player = other;
@@ -67,7 +81,7 @@ public class Lightswitch : NetworkBehaviour
             Debug.Log("Player is near");
         }
     }
-    
+
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -78,24 +92,4 @@ public class Lightswitch : NetworkBehaviour
         }
     }
 
-    void TurnOn()
-    {
-            //luz.gameObject.SetActive(true);
-        luz.GetComponent<Light>().enabled = true;
-        //luz.enabled = true;
-        isLightOn = true;
-            Debug.Log("Light On");  
-    }
-    
-    void TurnOff()
-    {
-            //luz.gameObject.SetActive(false);
-            luz.GetComponent<Light>().enabled = false;
-            //luz.enabled = false;
-            isLightOn = false;
-            Debug.Log("Light Off");    
-    }
-    
-    
-    
 }
