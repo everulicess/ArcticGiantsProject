@@ -13,7 +13,7 @@ public class PickUpObject : MonoBehaviour
     ShowPrompt showPrompt;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         mainCamera = GetComponentInChildren<Camera>();
     }
