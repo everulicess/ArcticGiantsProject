@@ -10,6 +10,9 @@ public class Lightswitch : NetworkBehaviour
     public NetworkObject luz;
     CharacterMovementHandler characterMovementHandler;
 
+    //number of lights on
+    GameBehaviour GameManager;
+
     bool isNear = false;
     bool isInteracting = false;
     Collider player;
@@ -20,6 +23,7 @@ public class Lightswitch : NetworkBehaviour
 
     private void Start()
     {
+        GameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
         interactText.enabled = false;
     }
     // Update is called once per frame
@@ -79,6 +83,7 @@ public class Lightswitch : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.All)]
     void TurnOnRPC()
     {
+        GameManager.lights += 1;
         luz.GetComponent<Light>().enabled = true;
         isLightOn = true;
         Debug.Log("Light On");
@@ -86,6 +91,7 @@ public class Lightswitch : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.All)]
     void TurnOffRPC()
     {
+        GameManager.lights -= 1;
         luz.GetComponent<Light>().enabled = false;
         isLightOn = false;
         Debug.Log("Light Off");
