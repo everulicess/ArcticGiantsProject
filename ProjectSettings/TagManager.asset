@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Package
+  - SmallPackage
+  - BigPackage
+  - DeliveyPlatform
   layers:
   - Default
   - TransparentFX

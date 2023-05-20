@@ -3,9 +3,11 @@ using UnityEngine;
 public class DestroyPackage : MonoBehaviour
 {
     CheckingTriggerWithPlayer checkDeliver;
+    DeliveryBehaviour deliveryManager;
     // Start is called before the first frame update
     void Start()
     {
+        deliveryManager = GameObject.Find("DeliveryManager").GetComponent<DeliveryBehaviour>();
     }
 
     // Update is called once per frame
@@ -13,7 +15,7 @@ public class DestroyPackage : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && checkDeliver.isPackageReady)
         {
-            Invoke("DestroyPackages", 5);
+            Invoke("DestroyPackages", 2);
         }
     }
     public void DestroyPackages()
@@ -21,16 +23,26 @@ public class DestroyPackage : MonoBehaviour
         checkDeliver.isPackageReady = false;
         Destroy(this.gameObject);
         Debug.Log("package gone");
+        if (this.gameObject.tag == "SmallPackage")
+        {
+            deliveryManager.currentNumberOfSmallPackages++;
+        }
+        if (this.gameObject.tag == "Package")
+        {
+            deliveryManager.currentNumberOfMediumPackages++;
+        }
+        if (this.gameObject.tag == "BigPackage")
+        {
+            deliveryManager.currentNumberOfBigPackages++;
+        }
         
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Delivery Platform")
+        if (other.CompareTag("DeliveyPlatform"))
         {
             checkDeliver = other.GetComponent<CheckingTriggerWithPlayer>();
-
-           
         }
         
     }
