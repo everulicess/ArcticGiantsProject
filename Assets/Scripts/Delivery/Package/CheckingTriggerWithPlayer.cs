@@ -7,8 +7,7 @@ using System;
 public class CheckingTriggerWithPlayer : NetworkBehaviour
 {
     public bool isPackageReady = false;
-    public NetworkObject networkObject;
-
+    
     // Update is called once per frame
     public void Update()
     {
@@ -20,7 +19,6 @@ public class CheckingTriggerWithPlayer : NetworkBehaviour
 
         if (other.CompareTag("Package"))
         {
-            isPackageReady = true;
             Debug.Log("Package On Site");
         }
         

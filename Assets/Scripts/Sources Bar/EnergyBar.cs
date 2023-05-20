@@ -10,7 +10,6 @@ public class EnergyBar : MonoBehaviour
     float maxEnergy = 1000f;
     float currentEnergy;
     float decreaseRate = 1f;
-    bool lightsOn = false;
     float energyDecreaseRateWithLightsOn = 2f;
 
 
@@ -31,7 +30,7 @@ public class EnergyBar : MonoBehaviour
     {
         amountOfLightsOn = GameManager.lights;
             // Decrease Energy faster if lights are on
-            currentEnergy -= energyDecreaseRateWithLightsOn * amountOfLightsOn * Time.deltaTime;
+            currentEnergy -= (decreaseRate + energyDecreaseRateWithLightsOn * amountOfLightsOn) * Time.deltaTime;
         
         EnergyBarSlider.value = currentEnergy;
 
