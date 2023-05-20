@@ -5,83 +5,67 @@ using Fusion;
 
 public class DeliveryBehaviour : NetworkBehaviour
 {
-    public int timeBetweenOrders = 4;
-
-    //Order packages number
+    public int timeBetweenOrders = 20;
     public int numberSmallPackages;
     public int numberMediumPackages;
     public int numberBigPackages;
-
-    //current packages delivered
     public int currentNumberOfSmallPackages;
     public int currentNumberOfMediumPackages;
     public int currentNumberOfBigPackages;
 
-    public bool isOrderCompleted = true;
+    public bool isOrderCompleted;
 
     // Start is called before the first frame update
     void Start()
     {
-        GenerateOrder();
-        
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckForEndedOrder();
-
-    }
-
-    void CheckForEndedOrder()
-    {
-        if (currentNumberOfSmallPackages == numberSmallPackages && currentNumberOfMediumPackages == numberMediumPackages && currentNumberOfBigPackages ==  numberBigPackages)
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            Debug.Log("--------------------------------------------------------------------------------------------------------");
-            isOrderCompleted = true;
-            Invoke("GenerateOrder", timeBetweenOrders);
-        }
-        else
-        {
-            
             isOrderCompleted = false;
+            GenerateOrder();
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            isOrderCompleted = true;
+            
+        }
+        //reseting the order time
+        
+        //Debug.Log($"{timeBetweenOrders} tiempo antes de siguiente orden");
+
+
     }
-    void ResetCurrentNumberOfPackages()
+    private void FixedUpdate()
     {
-        currentNumberOfSmallPackages = 0;
-        currentNumberOfMediumPackages = 0;
-        currentNumberOfBigPackages = 0;
-    }
-
-
-    void GenerateOrder()
-    {
-        ResetCurrentNumberOfPackages();
-
-        numberSmallPackages = GenerateSmallPackagesNumber();
-        numberMediumPackages = GenerateMediumPackagesNumber();
-        numberBigPackages = GenerateBigPackagesNumber();
-        Debug.Log($"------------------small:{numberSmallPackages} Medium:{numberMediumPackages} Big:{numberBigPackages}---------------");
-        return;
         
     }
 
-    int minPackageRange = 1;
-    int maxPackageRange = 3;
+    public void GenerateOrder()//int smallPackagesAmount, int mediumPackagesAmount, int bigPackagesAmount)
+    {
+        numberSmallPackages= GenerateSmallPackagesNumber();
+        numberMediumPackages = GenerateMediumPackagesNumber();
+        numberBigPackages = GenerateBigPackagesNumber();
+        Debug.Log($"small:{numberSmallPackages} Medium:{numberMediumPackages} Big:{numberBigPackages}");
+    }
+
     public int GenerateSmallPackagesNumber()
     {
-        int smallPackagesNumber = Random.Range(minPackageRange, maxPackageRange);
+        int smallPackagesNumber = Random.Range(0, 4);
         return smallPackagesNumber;
     }
     public int GenerateMediumPackagesNumber()
     {
-        int mediumPackagesNumber = Random.Range(minPackageRange, maxPackageRange);
+        int mediumPackagesNumber = Random.Range(0,4);
         return mediumPackagesNumber;
     }public int GenerateBigPackagesNumber()
     {
-        int bigPackagesNumber = Random.Range(minPackageRange, maxPackageRange);
-        isOrderCompleted = false;
+        int bigPackagesNumber = Random.Range(0, 4);
         return bigPackagesNumber;
     }
 }
