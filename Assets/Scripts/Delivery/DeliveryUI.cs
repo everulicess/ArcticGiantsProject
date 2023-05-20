@@ -8,6 +8,7 @@ public class DeliveryUI : MonoBehaviour
 {
     //notification
     public GameObject notification;
+    public GameObject notificationNew;
 
     DeliveryBehaviour deliveryManager;
     public TMP_Text newOrderText;
@@ -20,6 +21,7 @@ public class DeliveryUI : MonoBehaviour
     void Start()
     {
         notification.SetActive(false);
+        notificationNew.SetActive(false);
         deliveryManager = GameObject.Find("DeliveryManager").GetComponent<DeliveryBehaviour>();
        
     }
@@ -32,15 +34,17 @@ public class DeliveryUI : MonoBehaviour
         {
            
             notification.SetActive(false);
+            notificationNew.SetActive(true);
         }
         else
         {
             notification.SetActive(true);
+            notificationNew.SetActive(false);
         }
         orderState.text = $"{deliveryManager.currentNumberOfSmallPackages}/{deliveryManager.numberSmallPackages} small," +
-              $" {deliveryManager.currentNumberOfMediumPackages}/{deliveryManager.numberMediumPackages} medium," +
-              $" {deliveryManager.currentNumberOfBigPackages}/{deliveryManager.numberBigPackages}";
-        newOrderText.text = $"New Order {deliveryManager.timeBetweenOrders} big";
+                          $" {deliveryManager.currentNumberOfMediumPackages}/{deliveryManager.numberMediumPackages} medium," +
+                          $" {deliveryManager.currentNumberOfBigPackages}/{deliveryManager.numberBigPackages} big";
+        newOrderText.text = $"New Order in {deliveryManager.timeBetweenOrders}";
 
 
     }
