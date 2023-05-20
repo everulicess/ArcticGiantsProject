@@ -9,6 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3736534470965875456}
+  - component: {fileID: -1048733233176600857}
+  - component: {fileID: 3639898719880512829}
+  - component: {fileID: 8765781331895824595}
+  - component: {fileID: 47307355671888081}
   m_Layer: 0
   m_Name: Delivery platform
   m_TagString: Untagged
@@ -32,6 +36,70 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1048733233176600857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606270136014620665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce7a66ab8d40e8343a6c6591c938d875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &3639898719880512829
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606270136014620665}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.962678, y: 0.12419343, z: 1.8133965}
+  m_Center: {x: 2.201202, y: 0.22757399, z: 4.927414}
+--- !u!114 &8765781331895824595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606270136014620665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0473f877f36a6b04e8617d5a387587c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  isPackageReady: 0
+  networkObject: {fileID: 0}
+--- !u!114 &47307355671888081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606270136014620665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2305
+  NetworkGuid:
+    RawGuidValue: 193220332f2b6e0439a94e29d59244d2
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 8765781331895824595}
+  SimulationBehaviours: []
 --- !u!1001 &5559796074963909229
 PrefabInstance:
   m_ObjectHideFlags: 0

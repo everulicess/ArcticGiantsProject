@@ -7,7 +7,6 @@ using System;
 public class CheckingTriggerWithPlayer : NetworkBehaviour
 {
     public bool isPackageReady = false;
-    public NetworkObject networkObject;
 
     // Update is called once per frame
     public void Update()
