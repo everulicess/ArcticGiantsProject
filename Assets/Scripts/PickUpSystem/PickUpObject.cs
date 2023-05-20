@@ -100,5 +100,43 @@ public class PickUpObject : MonoBehaviour
             }
            
         }
+        if (other.CompareTag("SmallPackage"))
+        {
+            showPrompt = other.GetComponent<ShowPrompt>();
+            showPrompt.stringText = "Pick Up [E]";
+
+            if (isCarrying)
+            {
+                showPrompt.isCarrying = true;
+                showPrompt.stringText = "Drop[E]";
+                Debug.Log("change to drop E");
+            }
+            else
+            {
+                
+                showPrompt.stringText = "Pick Up [E]";
+                Debug.Log("change to Pick Up E");
+            }
+           
+        }
+        if (other.CompareTag("BigPackage"))
+        {
+            showPrompt = other.GetComponent<ShowPrompt>();
+            showPrompt.stringText = "Pick Up [E]";
+
+            if (isCarrying)
+            {
+                showPrompt.isCarrying = true;
+                showPrompt.stringText = "Drop[E]";
+                Debug.Log("change to drop E");
+            }
+            else
+            {
+                
+                showPrompt.stringText = "Pick Up [E]";
+                Debug.Log("change to Pick Up E");
+            }
+           
+        }
     }
 }
