@@ -81,7 +81,7 @@ public class PickUpObject : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Package") || other.CompareTag("SmallPackage") || other.CompareTag("BigPackage"))
+        if (other.CompareTag("Package"))
         {
             showPrompt = other.GetComponent<ShowPrompt>();
             showPrompt.stringText = "Pick Up [E]";
