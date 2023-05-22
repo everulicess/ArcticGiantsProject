@@ -641,8 +641,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   isPackageReady: 0
-  networkObject: {fileID: 6380386874919696229, guid: ebc7bdedf1e92f449a7d5ce277952664,
-    type: 3}
 --- !u!65 &72511139
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -775,6 +773,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: deliveryplatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 35bfeb8369287944eb357b28f30d796b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4236621523338768167, guid: 35bfeb8369287944eb357b28f30d796b,
         type: 3}
@@ -5524,8 +5527,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   isPackageReady: 0
-  networkObject: {fileID: 6380386874919696229, guid: ebc7bdedf1e92f449a7d5ce277952664,
-    type: 3}
 --- !u!65 &783833349
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9741,8 +9742,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   isPackageReady: 0
-  networkObject: {fileID: 6380386874919696229, guid: ebc7bdedf1e92f449a7d5ce277952664,
-    type: 3}
 --- !u!65 &1240884454
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13244,8 +13243,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   isPackageReady: 0
-  networkObject: {fileID: 6380386874919696229, guid: ebc7bdedf1e92f449a7d5ce277952664,
-    type: 3}
 --- !u!65 &1634725322
 BoxCollider:
   m_ObjectHideFlags: 0
