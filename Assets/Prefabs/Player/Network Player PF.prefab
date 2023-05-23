@@ -87,7 +87,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.6
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.5, z: 0}
@@ -564,13 +564,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5513665417147977502}
     m_Modifications:
+    - target: {fileID: 22366292, guid: 3b7c38803df3f464fbbb10cff6a586c7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 924789658, guid: 3b7c38803df3f464fbbb10cff6a586c7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1199839677, guid: 3b7c38803df3f464fbbb10cff6a586c7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3709234717388308291, guid: 3b7c38803df3f464fbbb10cff6a586c7,
         type: 3}
