@@ -37,7 +37,7 @@ public class GameBehaviour : MonoBehaviour
         set
         {
             numberOfLightsOn = value;
-            Debug.LogFormat("items: {0}", numberOfLightsOn);
+            Debug.LogFormat("lights: {0}", numberOfLightsOn);
         }
     }
 }

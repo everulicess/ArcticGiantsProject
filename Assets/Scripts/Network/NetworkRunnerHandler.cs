@@ -26,10 +26,10 @@ public class NetworkRunnerHandler : MonoBehaviour
 
     protected virtual Task InitializeNetworkRunner(NetworkRunner runner, GameMode gameMode, NetAddress address, SceneRef scene, Action<NetworkRunner> initialized)
     {
-        var sceneObjectProvider = runner.GetComponents(typeof(MonoBehaviour)).OfType<INetworkSceneManager>().FirstOrDefault();
-        if (sceneObjectProvider == null)
+        var sceneManager = runner.GetComponents(typeof(MonoBehaviour)).OfType<INetworkSceneManager>().FirstOrDefault();
+        if (sceneManager == null)
         {
-            sceneObjectProvider = runner.gameObject.AddComponent<NetworkSceneManagerDefault>();
+            sceneManager = runner.gameObject.AddComponent<NetworkSceneManagerDefault>();
         }
         runner.ProvideInput = true;
 
@@ -40,7 +40,7 @@ public class NetworkRunnerHandler : MonoBehaviour
             Scene = scene,
             SessionName = "TestRoom",
             Initialized = initialized,
-            SceneManager = sceneObjectProvider
+            SceneManager = sceneManager
         });
     }
 }

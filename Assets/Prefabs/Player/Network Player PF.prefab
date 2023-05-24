@@ -49,7 +49,6 @@ GameObject:
   - component: {fileID: 7848257691775766972}
   - component: {fileID: 974565508140183461}
   - component: {fileID: -7825073774232185798}
-  - component: {fileID: 5139792602858336535}
   m_Layer: 0
   m_Name: Network Player PF
   m_TagString: Player
@@ -226,18 +225,6 @@ MonoBehaviour:
     _hash: -814817977
   StateHashes: 000000008a18fce4b9abd9d36bd28ad9e99dc65c
   TriggerHashes: 00000000
---- !u!114 &5139792602858336535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5513665416781198574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: affc6ff25fb2ec74aa48e2aa32139291, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5513665417147977501
 GameObject:
   m_ObjectHideFlags: 0
