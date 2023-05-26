@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Video;
 
 public class MainMenuScriot : MonoBehaviour
 {
@@ -15,8 +14,6 @@ public class MainMenuScriot : MonoBehaviour
     }
     public void StartGame()
     {
-        //Destroy(introductionVideo);
-        //videoCanvas.enabled = false;
         SceneManager.LoadScene("Modeled option A");
     }
 }

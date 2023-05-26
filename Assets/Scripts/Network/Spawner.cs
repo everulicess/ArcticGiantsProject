@@ -11,10 +11,12 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
     //other component
     CharacterInputHandler characterInputHandler;
 
-    // Start is called before the first frame update
-    void Start()
+    //Video
+    //IntroVideoController videoController;
+
+    private void Start()
     {
-        
+       // videoController = GameObject.Find("Video").GetComponent<IntroVideoController>();
     }
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
@@ -24,8 +26,13 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
             Debug.Log("OnPlayerJoined we are server. Spawning player");
             runner.Spawn(playerPrefab, Utils.GetRandomSpawnPoint(), Quaternion.identity, player);
 
+
         }
-        else Debug.Log("OnPlayerJoined");
+        else
+        {
+            Debug.Log("OnPlayerJoined");
+            //videoController.PlayIntroVideo();
+        }
     }
 
 
