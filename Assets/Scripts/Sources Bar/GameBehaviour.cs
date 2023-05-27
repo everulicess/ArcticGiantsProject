@@ -10,10 +10,10 @@ public class GameBehaviour : MonoBehaviour
     public int numberOfLightsOn = 5;
 
     //Countdown
-    public float startingTime = 20f;
+    /*public float startingTime = 20f;
     float currentTime = 0f;
     [SerializeField]
-    TMP_Text timerText;
+    TMP_Text timerText;*/
 
     private void Start()
     {
@@ -21,13 +21,13 @@ public class GameBehaviour : MonoBehaviour
     }
     private void Update()
     {
-        currentTime -= 1 * Time.deltaTime;
+        /*currentTime -= 1 * Time.deltaTime;
         timerText.text = currentTime.ToString("0");
 
         if (currentTime <= 0)
         {
             currentTime = 0;
-        }
+        }*/
     }
 
     public int lights
