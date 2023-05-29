@@ -7,6 +7,9 @@ using Fusion;
 
 public class IntroVideoController : MonoBehaviour
 {
+
+    GameBehaviour gameManager;
+
     [SerializeField]
     VideoPlayer videoPlayer;
     [SerializeField]
@@ -14,14 +17,13 @@ public class IntroVideoController : MonoBehaviour
 
     private void Awake()
     {
-        
+        gameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
     }
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("UI disabled");
         canvasUI.SetActive(false);
-        //PlayIntroVideo();
         
     }
 
@@ -41,17 +43,21 @@ public class IntroVideoController : MonoBehaviour
         //Debug.Log("Checking is the video  is playing");
         if (videoPlayer.isPlaying)
         {
-            player.GetComponent<CharacterController>().enabled = false;
-            camera.GetComponent<LocalCameraHandler>().enabled = false;
+            //player.GetComponent<CharacterController>().enabled = false;
+            //camera.GetComponent<LocalCameraHandler>().enabled = false;
             canvasUI.SetActive(false);
+
+            gameManager.isVideoPlaying = true;
 
         }
         else
         {
-            player.GetComponent<CharacterController>().enabled = true;
-            camera.GetComponent<LocalCameraHandler>().enabled = true;
+            //player.GetComponent<CharacterController>().enabled = true;
+            //camera.GetComponent<LocalCameraHandler>().enabled = true;
             canvasUI.SetActive(true);
             this.gameObject.SetActive(false);
+
+            gameManager.isVideoFinished = true;
         }
     }
     public void PlayIntroVideo()

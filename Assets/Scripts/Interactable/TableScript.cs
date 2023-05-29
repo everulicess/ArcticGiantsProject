@@ -8,14 +8,15 @@ public class TableScript : MonoBehaviour
     [SerializeField]
     GameObject timer;
 
+
     TableState tableState;
 
     [Networked]
-    public bool isBroken { get; set; } = true;
+    public bool isTableBroken { get; set; } = true;
     [Networked]
-    public bool needsFixing { get; set; } = false;
+    public bool tableNeedsFixing { get; set; } = false;
     [Networked]
-    public bool isFixed { get; set; } = false;
+    public bool tableIsFixed { get; set; } = false;
     [Networked]
     public bool sendingSignals { get; set; } = false;
     enum TableState
@@ -50,21 +51,23 @@ public class TableScript : MonoBehaviour
             case TableState.SendingSignals:
                 SendingSignals();
                 ; break;
+            default:
+                ; break;
         }
     }
     void BrokenTable()
     {
-        Debug.Log("StateBrokenTable");
-        needsFixing = true;
+        //Debug.Log("StateBrokenTable");
+        tableNeedsFixing = true;
     }
     void NeedsFixing()
     {
-        Debug.Log("StateNeedsFixingTable");
-        isFixed = true;
+        //Debug.Log("StateNeedsFixingTable");
+        tableIsFixed = true;
     }
     void Fixed()
     {
-        Debug.Log("StateFixedTable");
+        //Debug.Log("StateFixedTable");
         sendingSignals = true;
     }
     void SendingSignals()
@@ -77,13 +80,13 @@ public class TableScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (isBroken)
+            if (isTableBroken)
             {
                 
-                if (needsFixing)
+                if (tableNeedsFixing)
                 {
                     tableState = TableState.NeedsFixing;
-                    if (isFixed)
+                    if (tableIsFixed)
                     {
                         tableState = TableState.Fixed;
                         if (sendingSignals)

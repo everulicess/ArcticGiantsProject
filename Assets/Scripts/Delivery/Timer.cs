@@ -44,7 +44,7 @@ public class Timer : MonoBehaviour
         else
         {
             Application.Quit();
-            EditorApplication.isPlaying = false;
+            //EditorApplication.isPlaying = false;
         }
     }
     public void StartTimer()

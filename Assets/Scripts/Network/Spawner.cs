@@ -11,16 +11,15 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
     //other component
     CharacterInputHandler characterInputHandler;
 
-    //Video
-    //IntroVideoController videoController;
+    GameBehaviour gameManager;
 
     private void Start()
     {
-       // videoController = GameObject.Find("Video").GetComponent<IntroVideoController>();
+        gameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
     }
-
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
+
         if (runner.IsServer)
         {
             Debug.Log("OnPlayerJoined we are server. Spawning player");
@@ -31,7 +30,6 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
         else
         {
             Debug.Log("OnPlayerJoined");
-            //videoController.PlayIntroVideo();
         }
     }
 
@@ -55,7 +53,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnConnectedToServer()
     {
-        Debug.Log($"OnConnectedToServer");
+        
     }
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {}
@@ -95,5 +93,6 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnConnectedToServer(NetworkRunner runner)
     {
+        Debug.Log($"OnConnectedToServer");
     }
 }
