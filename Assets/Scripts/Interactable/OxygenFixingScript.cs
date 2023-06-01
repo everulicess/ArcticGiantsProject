@@ -6,8 +6,11 @@ using Fusion;
 public class OxygenFixingScript : MonoBehaviour
 {
 
-    [Networked]
-    public bool isOxygenBroken { get; set; } = true;
+    GameBehaviour GameManager;
+
+    //player near
+    bool isPlayerNear = false;
+
     [Networked]
     public bool oxygenNeedsFixing { get; set; } = false;
     [Networked]
@@ -16,14 +19,14 @@ public class OxygenFixingScript : MonoBehaviour
     OxygenState oxygenState;
     enum OxygenState
     {
-        Broken,
         NeedsFixing,
         FixedAndWorking,
     }
     // Start is called before the first frame update
     void Start()
     {
-        oxygenState = OxygenState.Broken;
+        GameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
+        oxygenState = OxygenState.NeedsFixing;
     }
 
     // Update is called once per frame
@@ -31,9 +34,6 @@ public class OxygenFixingScript : MonoBehaviour
     {
         switch (oxygenState)
         {
-            case OxygenState.Broken:
-                Broken();
-                break;
             case OxygenState.NeedsFixing:
                 NeedsFixing();
                 break;
@@ -45,23 +45,41 @@ public class OxygenFixingScript : MonoBehaviour
         }
     }
 
-    //Broken
-    void Broken()
-    {
-
-        
-
-    }
 
     //NeedsFixing
     void NeedsFixing()
     {
-
+        //show what is needed to fix the oxygen into the UI
+        if (isPlayerNear)
+        {
+            if (GameManager.wires >= 3 && GameManager.pliers >= 1 && GameManager.screwdriver >= 1)
+            {
+                Debug.Log("Fixing oxygen");
+                oxygenState = OxygenState.FixedAndWorking;
+            }
+        }
+        
     }
 
     //Fixed and Working
     void FixedAndWorking()
     {
-
+        GameManager.isOxygenFixed = true;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerNear = true;
+            Debug.Log($"{isPlayerNear} oxygen");
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerNear = false;
+            Debug.Log($"{isPlayerNear} no oxygen");
+        }
     }
 }
