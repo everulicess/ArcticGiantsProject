@@ -73,6 +73,13 @@ public class PickUpObject : MonoBehaviour
 
     void DropObject()
     {
+        if (carriedObject.name == "Dog")
+        {
+            isCarrying = false;
+            carriedObject.GetComponent<Rigidbody>().isKinematic = false;
+            carriedObject = null;
+            return;
+        }
         showPrompt.stringText = "Pick Up [E]";
         showPrompt.isCarrying = false;
         isCarrying = false;

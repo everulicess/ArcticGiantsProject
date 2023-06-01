@@ -10,11 +10,6 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
     public Transform playerModel;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     public override void Spawned()
     {
@@ -40,7 +35,8 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
             AudioListener audioListener = GetComponentInChildren<AudioListener>();
             audioListener.enabled = false;
 
-            Debug.Log("Spawned remote player"); 
+            Debug.Log("Spawned remote player");
+
         }
 
         //Makes it easy to differenciate players
