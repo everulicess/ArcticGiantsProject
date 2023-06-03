@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class Pickupable : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    GameObject anchorPoint;
 
-    // Update is called once per frame
-    void Update()
+    WiresConnected wiresConnected;
+    private void Start()
     {
-        
+        wiresConnected = GameObject.Find("Circuit box").GetComponent<WiresConnected>();
+    }
+    // Start is called before the first frame update
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "Conector")
+        {
+            wiresConnected.wiresConnected += 1;
+            //Debug.Log("Connector");
+            Destroy(this.gameObject.GetComponent<Pickupable>());
+        }
+        else
+        {
+            float x = anchorPoint.transform.position.x + 0.3f;
+            float y = anchorPoint.transform.position.y;
+            float z = anchorPoint.transform.position.z;
+            this.gameObject.transform.position = new Vector3(x,y,z);
+        }
     }
 }

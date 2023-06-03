@@ -13,8 +13,11 @@ public class GameBehaviour : MonoBehaviour
     [SerializeField]
     Timer timeUntilRes;
     //Resources
-    OxygenBar oxygenBar;
-    EnergyBar energyBar;
+    [SerializeField]
+    Slider oxygenBar;
+    [SerializeField]
+    Slider energyBar;
+
     //Lights
     public int numberOfLightsOn = 5;
 
@@ -26,6 +29,7 @@ public class GameBehaviour : MonoBehaviour
 
     //Id for Activating Signals
     public bool hasID = false;
+
     //Control over the player
     public bool isPlayerControl = false;
 
@@ -54,11 +58,11 @@ public class GameBehaviour : MonoBehaviour
 
 
     }
-    private void Start()
+    private void Awake()
     {
         //timeUntilRes = GameObject.Find("Timer").GetComponent<Timer>();
-        oxygenBar = GameObject.Find("OxygenBar").GetComponent<OxygenBar>();
-        energyBar = GameObject.Find("ElectricityBar").GetComponent<EnergyBar>();
+        //oxygenBar = GameObject.Find("OxygenBar").GetComponent<OxygenBar>();
+        //energyBar = GameObject.Find("ElectricityBar").GetComponent<EnergyBar>();
     }
     private void Update()
     {
@@ -151,10 +155,10 @@ public class GameBehaviour : MonoBehaviour
     {
         if (isOxygenFixed)
         {
-            oxygenBar.currentOxygen += 15 * Time.deltaTime;
-            if (energyBar.currentEnergy <= 0)
+            oxygenBar.GetComponent<OxygenBar>().currentOxygen += 15 * Time.deltaTime;
+            if (energyBar.GetComponent<EnergyBar>().currentEnergy <= 0)
             {
-                if (oxygenBar.currentOxygen <= 0)
+                if (oxygenBar.GetComponent<OxygenBar>().currentOxygen <= 0)
                 {
                     gameState = GameState.Dead;
                 }
@@ -162,9 +166,9 @@ public class GameBehaviour : MonoBehaviour
         }
         else
         {
-            oxygenBar.currentOxygen -= 15 * Time.deltaTime;
-            energyBar.currentEnergy -= 5 * Time.deltaTime;
-            if (oxygenBar.currentOxygen <= 0)
+            oxygenBar.GetComponent<OxygenBar>().currentOxygen -= 15 * Time.deltaTime;
+            energyBar.GetComponent<EnergyBar>().currentEnergy -= 5 * Time.deltaTime;
+            if (oxygenBar.GetComponent<OxygenBar>().currentOxygen <= 0)
             {
                 gameState = GameState.Dead;
             }

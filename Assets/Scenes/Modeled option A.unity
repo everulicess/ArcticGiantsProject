@@ -6053,6 +6053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfLigthsText: {fileID: 764935797}
+  currentEnergy: 0
   EnergyBarSlider: {fileID: 808057300}
 --- !u!114 &808057300
 MonoBehaviour:
@@ -14332,9 +14333,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a59b338103cbc4f9d648ed2a1452e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeUntilRes: {fileID: 0}
+  oxygenBar: {fileID: 0}
+  energyBar: {fileID: 0}
   numberOfLightsOn: 5
+  wrench: 0
+  screwdriver: 0
+  pliers: 0
+  wires: 0
+  hasID: 0
   isPlayerControl: 0
-  player: {fileID: 0}
   vp: {fileID: 0}
 --- !u!4 &1652428360
 Transform:

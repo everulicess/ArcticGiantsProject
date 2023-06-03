@@ -7,14 +7,16 @@ public class PickUpObject : MonoBehaviour
     Camera mainCamera;
     bool isCarrying;
     GameObject carriedObject;
-    float distance = 2f;
+    float distance = 1.45f;
     float smooth = 5f;
 
+    GameBehaviour GameManager;
     ShowPrompt showPrompt;
 
     // Start is called before the first frame update
     void Awake()
     {
+        GameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
         mainCamera = GetComponentInChildren<Camera>();
     }
 
@@ -35,13 +37,18 @@ public class PickUpObject : MonoBehaviour
 
     void Carry(GameObject o)
     {
+        float x = 23.97f;
+        float y = this.gameObject.transform.position.y;
+        float z = -5.04f;
+        this.gameObject.transform.position = new (x, y, z);// (o.transform.position.z+2));
+        GameManager.isPlayerControl = false;
         o.transform.position = Vector3.Lerp(o.transform.position, mainCamera.transform.position + mainCamera.transform.forward * distance, Time.deltaTime * smooth);
 
     }
 
     public void PickUp()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetMouseButtonDown(0))//(Input.GetKeyDown(KeyCode.E))
         {
             int x = Screen.width / 2;
             int y = Screen.height / 2;
@@ -56,7 +63,12 @@ public class PickUpObject : MonoBehaviour
                 {
                     isCarrying = true;
                     carriedObject = p.gameObject;
-                    p.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                    //p.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                }
+                else
+                {
+                    isCarrying = false; 
+                    carriedObject = null;
                 }
             }
 
@@ -65,85 +77,48 @@ public class PickUpObject : MonoBehaviour
 
     void CheckDrop()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        
+        if (Input.GetMouseButtonDown(0))
         {
+            GameManager.isPlayerControl = true;
             DropObject();
         }
     }
 
     void DropObject()
     {
-        if (carriedObject.name == "Dog")
-        {
-            isCarrying = false;
-            carriedObject.GetComponent<Rigidbody>().isKinematic = false;
-            carriedObject = null;
-            return;
-        }
-        showPrompt.stringText = "Pick Up [E]";
-        showPrompt.isCarrying = false;
+        //showPrompt.stringText = "Pick Up [E]";
+        //showPrompt.isCarrying = false;
         isCarrying = false;
-        carriedObject.GetComponent<Rigidbody>().isKinematic = false;
+        //carriedObject.GetComponent<Rigidbody>().isKinematic = false;
         carriedObject = null;
+        
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Package"))
+        if (other.CompareTag("Package")|| other.CompareTag("SmallPackage")|| other.CompareTag("BigPackage"))
         {
-            showPrompt = other.GetComponent<ShowPrompt>();
-            showPrompt.stringText = "Pick Up [E]";
-
-            if (isCarrying)
-            {
-                showPrompt.isCarrying = true;
-                showPrompt.stringText = "Drop[E]";
-                Debug.Log("change to drop E");
-            }
-            else
-            {
-                
-                showPrompt.stringText = "Pick Up [E]";
-                Debug.Log("change to Pick Up E");
-            }
-           
+            ComparePackageTag(other);
         }
-        if (other.CompareTag("SmallPackage"))
+    }
+
+    void ComparePackageTag(Collider other)
+    {
+        showPrompt = other.GetComponent<ShowPrompt>();
+        showPrompt.stringText = "Pick Up [E]";
+
+        if (isCarrying)
         {
-            showPrompt = other.GetComponent<ShowPrompt>();
-            showPrompt.stringText = "Pick Up [E]";
-
-            if (isCarrying)
-            {
-                showPrompt.isCarrying = true;
-                showPrompt.stringText = "Drop[E]";
-                Debug.Log("change to drop E");
-            }
-            else
-            {
-                
-                showPrompt.stringText = "Pick Up [E]";
-                Debug.Log("change to Pick Up E");
-            }
-           
+            showPrompt.isCarrying = true;
+            showPrompt.stringText = "Drop[E]";
+            Debug.Log("change to drop E");
         }
-        if (other.CompareTag("BigPackage"))
+        else
         {
-            showPrompt = other.GetComponent<ShowPrompt>();
-            showPrompt.stringText = "Pick Up [E]";
 
-            if (isCarrying)
-            {
-                showPrompt.isCarrying = true;
-                showPrompt.stringText = "Drop[E]";
-                Debug.Log("change to drop E");
-            }
-            else
-            {
-                
-                showPrompt.stringText = "Pick Up [E]";
-                Debug.Log("change to Pick Up E");
-            }
-           
+            showPrompt.stringText = "Pick Up [E]";
+            Debug.Log("change to Pick Up E");
         }
+
     }
 }
