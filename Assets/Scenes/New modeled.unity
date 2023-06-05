@@ -1951,6 +1951,7 @@ Transform:
   - {fileID: 177785618}
   - {fileID: 1438552110}
   - {fileID: 315443653}
+  - {fileID: 938299809}
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2878,7 +2879,6 @@ GameObject:
   m_Component:
   - component: {fileID: 177785618}
   - component: {fileID: 177785621}
-  - component: {fileID: 177785620}
   - component: {fileID: 177785619}
   m_Layer: 0
   m_Name: TV camera 9
@@ -2935,14 +2935,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &177785620
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 177785617}
-  m_Enabled: 1
 --- !u!20 &177785621
 Camera:
   m_ObjectHideFlags: 0
@@ -2974,7 +2966,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 8e6ba1b20325e2c448c6159d7e419bb5, type: 2}
   m_TargetDisplay: 0
@@ -3246,7 +3238,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 42fc15756d74ca649a6e6dcb1320b075, type: 2}
   m_TargetDisplay: 0
@@ -3382,7 +3374,6 @@ GameObject:
   m_Component:
   - component: {fileID: 234278049}
   - component: {fileID: 234278052}
-  - component: {fileID: 234278051}
   - component: {fileID: 234278050}
   m_Layer: 0
   m_Name: TV Camera 8
@@ -3439,14 +3430,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &234278051
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234278048}
-  m_Enabled: 1
 --- !u!20 &234278052
 Camera:
   m_ObjectHideFlags: 0
@@ -3478,7 +3461,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: d420ede75e017a143bf1061ac577b327, type: 2}
   m_TargetDisplay: 0
@@ -5025,7 +5008,6 @@ GameObject:
   m_Component:
   - component: {fileID: 315443653}
   - component: {fileID: 315443656}
-  - component: {fileID: 315443655}
   - component: {fileID: 315443654}
   m_Layer: 0
   m_Name: tv camera 11
@@ -5082,14 +5064,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &315443655
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 315443652}
-  m_Enabled: 1
 --- !u!20 &315443656
 Camera:
   m_ObjectHideFlags: 0
@@ -5121,7 +5095,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 0d5ce3602fab68a4e8fba6cd004c562c, type: 2}
   m_TargetDisplay: 0
@@ -9513,7 +9487,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: bdfe2c47f45b20e46848121d084111ed, type: 2}
   m_TargetDisplay: 0
@@ -13755,7 +13729,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 46aa3442871071144995e8923f794fac, type: 2}
   m_TargetDisplay: 0
@@ -15750,7 +15724,6 @@ GameObject:
   m_Component:
   - component: {fileID: 938299809}
   - component: {fileID: 938299808}
-  - component: {fileID: 938299807}
   - component: {fileID: 938299806}
   m_Layer: 0
   m_Name: tv Camera 12
@@ -15792,14 +15765,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &938299807
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938299805}
-  m_Enabled: 1
 --- !u!20 &938299808
 Camera:
   m_ObjectHideFlags: 0
@@ -15851,12 +15816,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 938299805}
   m_LocalRotation: {x: 0.50458735, y: -0.48932496, z: 0.493577, w: 0.512186}
-  m_LocalPosition: {x: 32.12, y: 14.01, z: -2.96}
+  m_LocalPosition: {x: -11.525269, y: -68.94482, z: -68.4903}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_Father: {fileID: 87565506}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &939422930 stripped
 GameObject:
@@ -20913,7 +20878,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 866e44df843d6c542804c0429815917a, type: 2}
   m_TargetDisplay: 0
@@ -23302,7 +23267,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: bf8704df007ba2146b16dda17aa42ab9, type: 2}
   m_TargetDisplay: 0
@@ -25588,7 +25553,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1410596568}
   - component: {fileID: 1410596571}
-  - component: {fileID: 1410596570}
   - component: {fileID: 1410596569}
   m_Layer: 0
   m_Name: TV Camera 6
@@ -25645,14 +25609,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &1410596570
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1410596567}
-  m_Enabled: 1
 --- !u!20 &1410596571
 Camera:
   m_ObjectHideFlags: 0
@@ -25684,7 +25640,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 3055acd585a906941a7bc2253beb786e, type: 2}
   m_TargetDisplay: 0
@@ -25964,7 +25920,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1438552110}
   - component: {fileID: 1438552113}
-  - component: {fileID: 1438552112}
   - component: {fileID: 1438552111}
   m_Layer: 0
   m_Name: tv Camera 10
@@ -26021,14 +25976,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &1438552112
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438552109}
-  m_Enabled: 1
 --- !u!20 &1438552113
 Camera:
   m_ObjectHideFlags: 0
@@ -26060,7 +26007,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 6bd0f1e27c16c324f95bd85c0a8bfb38, type: 2}
   m_TargetDisplay: 0
@@ -33930,7 +33877,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1972185012}
   - component: {fileID: 1972185015}
-  - component: {fileID: 1972185014}
   - component: {fileID: 1972185013}
   m_Layer: 0
   m_Name: TV Camera 7
@@ -33947,7 +33893,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972185011}
   m_LocalRotation: {x: 0.70173544, y: -0.0026158935, z: 0.009395341, w: 0.71237093}
-  m_LocalPosition: {x: -39.45527, y: -67.294815, z: -93.6503}
+  m_LocalPosition: {x: -39.49, y: -67.26, z: -91.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33987,14 +33933,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &1972185014
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1972185011}
-  m_Enabled: 1
 --- !u!20 &1972185015
 Camera:
   m_ObjectHideFlags: 0
@@ -34026,7 +33964,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 5386dd7d28670aa4c91857e29577fe86, type: 2}
   m_TargetDisplay: 0

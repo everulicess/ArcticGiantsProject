@@ -57,5 +57,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4a3cf5409d0534cbc4ed42f5eb51f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 501971468090056132, guid: 32a2d48d01a3eac468cc637d0948388c,
+  playerPrefab: {fileID: 7399353964054714136, guid: b0b409e2c862f3147891a52b95919373,
     type: 3}
