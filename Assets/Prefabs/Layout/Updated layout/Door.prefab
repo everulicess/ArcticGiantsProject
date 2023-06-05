@@ -63,7 +63,7 @@ MonoBehaviour:
     _value: 0
     _inverse: 0
     _hash: -814817977
-  StateHashes: 00000000dec0b8185c8ff49d68345b76ec178d99
+  StateHashes: 00000000a144e748040000f7b41aa242115e45fd
   TriggerHashes: 00000000
 --- !u!65 &3302294856914723565
 BoxCollider:
@@ -76,8 +76,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 4.285904}
-  m_Center: {x: 0, y: 0, z: 0.20170695}
+  m_Size: {x: 4.892169, y: 1, z: 4.285904}
+  m_Center: {x: -0.0813607, y: 0, z: 0.20170689}
 --- !u!114 &6168810165067374736
 MonoBehaviour:
   m_ObjectHideFlags: 0
