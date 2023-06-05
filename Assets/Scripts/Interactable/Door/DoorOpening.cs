@@ -6,7 +6,6 @@ public class DoorOpening : MonoBehaviour
 {
     [SerializeField]
     Animator doorAnim;
-    bool isPlayerNear;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,21 +15,19 @@ public class DoorOpening : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //doorAnim.SetBool("openDoor",true);
+        doorAnim.SetBool("openDoor",true);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerNear = true;
             doorAnim.SetBool("openDoor", true);
         }
     }private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerNear = false;
             doorAnim.SetBool("openDoor", false);
         }
     }
