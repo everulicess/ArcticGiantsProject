@@ -7,12 +7,13 @@ public class PickUpObject : MonoBehaviour
     Camera mainCamera;
     bool isCarrying;
     GameObject carriedObject;
-    float distance = 1.45f;
+    float distance = 1.42f;
     float smooth = 5f;
 
     GameBehaviour GameManager;
     ShowPrompt showPrompt;
 
+    Pickupable p;
     // Start is called before the first frame update
     void Awake()
     {
@@ -58,11 +59,13 @@ public class PickUpObject : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                Pickupable p = hit.collider.GetComponent<Pickupable>();
+                p = hit.collider.GetComponent<Pickupable>();
+                
                 if (p != null)
                 {
                     isCarrying = true;
                     carriedObject = p.gameObject;
+                    p.isBeingPickedUp = true;
                     //p.gameObject.GetComponent<Rigidbody>().isKinematic = true;
                 }
                 else
@@ -80,8 +83,10 @@ public class PickUpObject : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))
         {
+            
             GameManager.isPlayerControl = true;
             DropObject();
+
         }
     }
 
@@ -90,9 +95,10 @@ public class PickUpObject : MonoBehaviour
         //showPrompt.stringText = "Pick Up [E]";
         //showPrompt.isCarrying = false;
         isCarrying = false;
+        p.isBeingPickedUp = false;
         //carriedObject.GetComponent<Rigidbody>().isKinematic = false;
         carriedObject = null;
-        
+
     }
     private void OnTriggerEnter(Collider other)
     {

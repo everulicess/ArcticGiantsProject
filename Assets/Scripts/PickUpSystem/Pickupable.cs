@@ -7,26 +7,43 @@ public class Pickupable : MonoBehaviour
     [SerializeField]
     GameObject anchorPoint;
 
+    bool isConnected = false;
+    public bool isBeingPickedUp = true;
     WiresConnected wiresConnected;
     private void Start()
     {
         wiresConnected = GameObject.Find("Circuit box").GetComponent<WiresConnected>();
+    }
+
+    private void Update()
+    {
+        if (!isBeingPickedUp)
+        {
+            if (isConnected == false)
+            {
+                Debug.Log("IsNOTconnected");
+                float x = anchorPoint.transform.position.x + 0.3f;
+                float y = anchorPoint.transform.position.y;
+                float z = anchorPoint.transform.position.z;
+                this.gameObject.transform.position = new Vector3(x, y, z);
+
+            }
+            else
+            {
+                Debug.Log("Isconnected");
+            }
+        }
+        
     }
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
         if (other.name == "Conector")
         {
-            wiresConnected.wiresConnected += 1;
+            isConnected = true;
+            wiresConnected.ConnectedWires += 1;
             //Debug.Log("Connector");
             Destroy(this.gameObject.GetComponent<Pickupable>());
-        }
-        else
-        {
-            float x = anchorPoint.transform.position.x + 0.3f;
-            float y = anchorPoint.transform.position.y;
-            float z = anchorPoint.transform.position.z;
-            this.gameObject.transform.position = new Vector3(x,y,z);
         }
     }
 }

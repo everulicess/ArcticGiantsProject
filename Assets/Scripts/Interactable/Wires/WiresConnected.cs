@@ -5,6 +5,11 @@ using UnityEngine;
 public class WiresConnected : MonoBehaviour
 {
     public int wiresConnected = 0;
+    private void Update()
+    {
+
+        Debug.LogFormat("Wires: {0}", wiresConnected);
+    }
 
     public int ConnectedWires
     {

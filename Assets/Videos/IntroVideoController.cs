@@ -24,7 +24,6 @@ public class IntroVideoController : MonoBehaviour
     {
         Debug.Log("UI disabled");
         canvasUI.SetActive(false);
-        
     }
 
     // Update is called once per frame
