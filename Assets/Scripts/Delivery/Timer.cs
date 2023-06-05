@@ -9,12 +9,10 @@ using UnityEditor;
 public class Timer : MonoBehaviour
 {
     public TMP_Text timeText;
-    float timeLimit = 20f;
+    float timeLimit = 10f;
 
-    bool inMinutes;
-
-    float time;
-    bool startTimer;
+    public float time;
+    public bool startTimer;
 
     float multiplierFactor;
 
@@ -25,6 +23,7 @@ public class Timer : MonoBehaviour
         timeText.text = timeLimit.ToString();
         time = timeLimit;
         startTimer = true;
+
     }
     // Update is called once per frame
     void Update()
@@ -43,14 +42,16 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            Application.Quit();
-            //EditorApplication.isPlaying = false;
+            /*Application.Quit();
+            Debug.Log("YOU HAVE BEEN RESCUED");
+            EditorApplication.isPlaying = false;
+            */
         }
     }
     public void StartTimer()
     {
-        multiplierFactor = 1f / timeLimit;
-        startTimer = true;
+        //multiplierFactor = 1f / timeLimit;
+        
     }
 
    

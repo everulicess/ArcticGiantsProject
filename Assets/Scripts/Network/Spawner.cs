@@ -16,6 +16,15 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
     private void Start()
     {
         gameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
+        spawningPlayer = SpawningPlayer.FirstPlayer;
+    }
+    SpawningPlayer spawningPlayer;
+
+    enum SpawningPlayer
+    {
+        FirstPlayer,
+        SecondPlayer
+
     }
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
@@ -23,8 +32,20 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
         if (runner.IsServer)
         {
             Debug.Log("OnPlayerJoined we are server. Spawning player");
-            runner.Spawn(playerPrefab, Utils.GetRandomSpawnPoint(), Quaternion.identity, player);
-
+            
+            switch (spawningPlayer)
+            {
+                case SpawningPlayer.FirstPlayer:
+                    runner.Spawn(playerPrefab, Utils.GetFirstSpawnPoint("First"), Quaternion.identity, player);
+                    spawningPlayer = SpawningPlayer.SecondPlayer;
+                    break;
+                case SpawningPlayer.SecondPlayer:
+                    runner.Spawn(playerPrefab, Utils.GetFirstSpawnPoint("Second"), Quaternion.identity, player);
+                    break;
+                default:
+                    runner.Spawn(playerPrefab, Utils.GetFirstSpawnPoint("First"), Quaternion.identity, player);
+                    break;
+            }
 
         }
         else

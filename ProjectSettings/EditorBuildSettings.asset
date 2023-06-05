@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 6b67b2488ead3264b904e1573a7c69bd
   - enabled: 1
-    path: Assets/Scenes/Modeled option A.unity
-    guid: 3e40ae0834820e14b827cbcfcee07f20
+    path: Assets/Scenes/New modeled.unity
+    guid: 60e10d4089b921944bf2f2084c3e5f30
   m_configObjects: {}

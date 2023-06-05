@@ -53,7 +53,7 @@ public class DeliveryBehaviour : MonoBehaviour
         numberMediumPackages = GenerateMediumPackageNumber();
         numberBigPackages = GenerateBigPackageNumber();
 
-        Debug.Log($"small{numberSmallPackages} medium {numberMediumPackages} big {numberBigPackages}");
+        //Debug.Log($"small{numberSmallPackages} medium {numberMediumPackages} big {numberBigPackages}");
         return;
 
     }

@@ -8,7 +8,7 @@ public class EnergyBar : MonoBehaviour
 {
     public TextMeshProUGUI numberOfLigthsText;
     float maxEnergy = 1000f;
-    float currentEnergy;
+    public float currentEnergy;
     float decreaseRate = 1f;
     float energyDecreaseRateWithLightsOn = 2f;
 

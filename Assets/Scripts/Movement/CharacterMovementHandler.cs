@@ -112,7 +112,7 @@ public class CharacterMovementHandler : NetworkBehaviour
         if (transform.position.y < -5)
         {
             Debug.Log("Respawning on the plane");
-            transform.position = Utils.GetRandomSpawnPoint();
+            transform.position = Utils.GetFirstSpawnPoint("first");
         }
     }
 

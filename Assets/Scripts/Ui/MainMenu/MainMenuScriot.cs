@@ -14,6 +14,6 @@ public class MainMenuScriot : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene("Modeled option A");
+        SceneManager.LoadScene("New modeled");
     }
 }

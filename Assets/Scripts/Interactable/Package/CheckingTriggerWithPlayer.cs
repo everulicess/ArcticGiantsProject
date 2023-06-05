@@ -6,14 +6,7 @@ using System;
 
 public class CheckingTriggerWithPlayer : NetworkBehaviour
 {
-    public bool isPackageReady = false;
-
-    // Update is called once per frame
-    public void Update()
-    {
-    }
-
-  
+    public bool isPackageReady = false;  
     private void OnTriggerEnter(Collider other)
     {
 

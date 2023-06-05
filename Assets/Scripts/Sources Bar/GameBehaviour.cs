@@ -5,12 +5,32 @@ using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
 using Fusion;
+using UnityEditor;
 
 public class GameBehaviour : MonoBehaviour
 {
+    //Rescue timer
+    [SerializeField]
+    Timer timeUntilRes;
+    //Resources
+    [SerializeField]
+    Slider oxygenBar;
+    [SerializeField]
+    Slider energyBar;
+
     //Lights
     public int numberOfLightsOn = 5;
 
+    //Tools for repairing
+    public int wrench=0;
+    public int screwdriver=0;
+    public int pliers=0;
+    public int wires=0;
+
+    //Id for Activating Signals
+    public bool hasID = false;
+
+    //Control over the player
     public bool isPlayerControl = false;
 
     //Booleans gameFlow
@@ -24,67 +44,51 @@ public class GameBehaviour : MonoBehaviour
     public bool isTableFixed { get; set; } = false;
     [Networked]
     public bool isSolarPanels { get; set; } = false;
-    [Networked]
-    public bool isNextStage { get; set; } = false;
 
     //GameStates
-    GameState gameState = GameState.playingVideo;
+    GameState gameState = GameState.PlayingVideo;
 
     enum GameState
     {
-        playingVideo,
-        finishedVideo,
-        oxygenNeedsFixing,
-        tableNeedsFixing,
-        solarPanelsFixing,
-        waitingForRescue
+        PlayingVideo,
+        RepairingStuff,
+        WaitingForRescue,
+        Dead,
+        Rescued
 
 
     }
+    private void Awake()
+    {
+        //timeUntilRes = GameObject.Find("Timer").GetComponent<Timer>();
+        //oxygenBar = GameObject.Find("OxygenBar").GetComponent<OxygenBar>();
+        //energyBar = GameObject.Find("ElectricityBar").GetComponent<EnergyBar>();
+    }
     private void Update()
     {
+        
         switch (gameState)
         {
-            case GameState.playingVideo:
+            case GameState.PlayingVideo:
                 PlayingVideo(vp);
                 break;
-            case GameState.finishedVideo:
-                FinishedVideo(vp);
-                break;
-            case GameState.oxygenNeedsFixing:
-                OxygenNeedsFixing();
-                break;
-            case GameState.solarPanelsFixing:
-                SolarPanelsNeedFixing();
-                break;
-            case GameState.tableNeedsFixing:
-                TableNeedsFixing();
-                break;
-            case GameState.waitingForRescue:
+            case GameState.RepairingStuff:
+                RepairingStuff();
+                ; break;
+            case GameState.WaitingForRescue:
                 WaitingForRescue();
                 break;
+            case GameState.Dead:
+                Dead();
+                ; break;
+            case GameState.Rescued:
+                Rescued();
+                ; break;
             default:
                 break;
         }
     }
     //GameMethods
-
-
-    //StartTheGame
-    //Playerprefab
-    public GameObject player;
-    /*void StartingGame()
-    {
-        player.SetActive(false);
-        Debug.Log("Starting game state");
-        Invoke("",3);
-        if (isVideoPlaying)
-        {
-            gameState = GameState.playingVideo;
-            Debug.Log("changing from start to video play");
-        }
-    }*/
-
 
     //Playing introduction video
     //videoPlayer
@@ -95,48 +99,23 @@ public class GameBehaviour : MonoBehaviour
         vp.SetActive(true);
         if (isVideoFinished)
         {
-            gameState = GameState.finishedVideo;
-            Debug.Log("play video ----------------Finish video");
+            isPlayerControl = true;
+            vp.SetActive(false);
+            Debug.Log("VIDEO FINISHED");
+            gameState = GameState.RepairingStuff;
         }
     }
 
-    //Finished Video
-    void FinishedVideo(GameObject vp)
+    //Repairing phase
+   
+    void RepairingStuff()
     {
-        isPlayerControl = true;
-        vp.SetActive(false);
-        Debug.Log("VIDEO FINISHED");
-        if (!isOxygenFixed)
-        {
-            gameState = GameState.oxygenNeedsFixing;
-        }
-    }
-
-    //Oxygen Needs Fixing
-    void OxygenNeedsFixing()
-    {
-        //Decrease Oxygen drastically
-
         
-        if (isOxygenFixed)
-        {
-            //Decrease energy always on another script that manages oxygen
-            gameState = GameState.tableNeedsFixing;
-        }
-    }
-
-    //Solar Panels Fixing
-    void SolarPanelsNeedFixing()
-    {
-
-    }
-
-    //Table Needs Fixing
-    void TableNeedsFixing()
-    {
+        OxygenCheck();
         if (isTableFixed)
         {
-
+            Debug.Log("Change State waiting for rescue");
+            gameState = GameState.WaitingForRescue;
         }
 
     }
@@ -144,7 +123,56 @@ public class GameBehaviour : MonoBehaviour
     //Waiting For Rescue
     void WaitingForRescue()
     {
+        Debug.Log("RES RES RES RES RES");
+        if (timeUntilRes.time <= 0)
+        {
+            gameState = GameState.Rescued;
+        }
+        timeUntilRes.startTimer = true;
+        OxygenCheck();
 
+    }
+
+    //Dead
+    void Dead()
+    {
+        Debug.Log("NICE TRY, GOOD LUCK NEXT TIME");
+        //EditorApplication.isPlaying = false;
+        Application.Quit();
+    }
+
+    //Rescued
+    void Rescued()
+    {
+
+        Debug.Log("YOU HAVE BEEN RESCUED FROM THE GAME MANAGER");
+        //EditorApplication.isPlaying = false;
+        Application.Quit();
+    }
+
+    //Check For Oxygen
+    void OxygenCheck()
+    {
+        if (isOxygenFixed)
+        {
+            oxygenBar.GetComponent<OxygenBar>().currentOxygen += 15 * Time.deltaTime;
+            if (energyBar.GetComponent<EnergyBar>().currentEnergy <= 0)
+            {
+                if (oxygenBar.GetComponent<OxygenBar>().currentOxygen <= 0)
+                {
+                    gameState = GameState.Dead;
+                }
+            }
+        }
+        else
+        {
+            oxygenBar.GetComponent<OxygenBar>().currentOxygen -= 15 * Time.deltaTime;
+            energyBar.GetComponent<EnergyBar>().currentEnergy -= 5 * Time.deltaTime;
+            if (oxygenBar.GetComponent<OxygenBar>().currentOxygen <= 0)
+            {
+                gameState = GameState.Dead;
+            }
+        }
     }
     //Lights
     public int lights
