@@ -40,6 +40,10 @@ public class Pickupable : MonoBehaviour
     {
         if (other.name == "Conector")
         {
+            float x = other.gameObject.transform.position.x;
+            float y = other.gameObject.transform.position.y;
+            float z = other.gameObject.transform.position.z;
+            this.gameObject.transform.position = new Vector3(x, y, z);
             isConnected = true;
             wiresConnected.ConnectedWires += 1;
             //Debug.Log("Connector");

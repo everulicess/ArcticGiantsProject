@@ -137,7 +137,7 @@ public class GameBehaviour : MonoBehaviour
     void Dead()
     {
         Debug.Log("NICE TRY, GOOD LUCK NEXT TIME");
-        EditorApplication.isPlaying = false;
+        //EditorApplication.isPlaying = false;
         Application.Quit();
     }
 
@@ -146,7 +146,7 @@ public class GameBehaviour : MonoBehaviour
     {
 
         Debug.Log("YOU HAVE BEEN RESCUED FROM THE GAME MANAGER");
-        EditorApplication.isPlaying = false;
+        //EditorApplication.isPlaying = false;
         Application.Quit();
     }
 
