@@ -12,7 +12,7 @@ public static class Utils
             case "First":
                 return new Vector3(-4, 5, -6);
             case "Second":
-                return  new Vector3(5,5,-25); 
+                return  new Vector3(-3,5,10); 
             default:
                 return new Vector3(-4, 5, -6);
         }
