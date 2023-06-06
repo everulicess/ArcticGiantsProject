@@ -41,7 +41,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
                     spawningPlayer = SpawningPlayer.SecondPlayer;
                     break;
                 case SpawningPlayer.SecondPlayer:
-                    runner.Spawn(playerPrefab, Utils.GetFirstSpawnPoint("First"), Quaternion.identity, player);
+                    runner.Spawn(playerPrefab, Utils.GetFirstSpawnPoint("Second"), Quaternion.identity, player);
                     break;
                 default:
                     runner.Spawn(playerPrefab, Utils.GetFirstSpawnPoint("First"), Quaternion.identity, player);
