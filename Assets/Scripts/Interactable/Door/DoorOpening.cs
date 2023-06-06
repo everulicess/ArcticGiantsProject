@@ -1,34 +1,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
+using UnityEngine.UI;
 
 public class DoorOpening : MonoBehaviour
 {
     [SerializeField]
-    Animator doorAnim;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    GameObject[] doors;
 
-    // Update is called once per frame
-    void Update()
-    {
-        doorAnim.SetBool("openDoor",true);
-    }
+    [SerializeField]
+    Slider energyBar;
 
-    private void OnTriggerEnter(Collider other)
+    public bool isDoorOpened = false;
+    int numberOfDoors;
+    private void Update()
     {
-        if (other.CompareTag("Player"))
+        if (isDoorOpened)
         {
-            doorAnim.SetBool("openDoor", true);
+            CloseDoor();
         }
-    }private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        else
         {
-            doorAnim.SetBool("openDoor", false);
+            OpenDoor();
         }
     }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void OpenDoor()
+    {
+        Debug.Log("OpenDoor");
+        //isDoorOpened = true;
+        numberOfDoors = doors.Length;
+        foreach (var doors in doors)
+        {
+            
+            doors.GetComponentInChildren<Animator>().SetBool("openDoor",true);
+            doors.GetComponentInChildren<Animator>().Play("ClosingDoor");
+        }
+    }
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void CloseDoor()
+    {
+        Debug.Log("CloseDoor");
+        //isDoorOpened = false;
+        foreach (var doors in doors)
+        {
+            doors.GetComponentInChildren<Animator>().Play("OpeningDoor");
+            doors.GetComponentInChildren<Animator>().SetBool("openDoor", false);
+            
+        }
+    }
+
 }

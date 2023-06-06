@@ -52,7 +52,7 @@ public class OxygenFixingScript : MonoBehaviour
         //show what is needed to fix the oxygen into the UI
         if (isPlayerNear)
         {
-            if (GameManager.wires >= 3 && GameManager.pliers >= 1 && GameManager.screwdriver >= 1)
+            if (GameManager.wires >= 1 && GameManager.pliers >= 1 && GameManager.screwdriver >= 1)
             {
                 Debug.Log("Fixing oxygen");
                 oxygenState = OxygenState.FixedAndWorking;

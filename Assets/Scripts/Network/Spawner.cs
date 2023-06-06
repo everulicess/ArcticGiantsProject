@@ -26,6 +26,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
         SecondPlayer
 
     }
+    
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
 
@@ -40,7 +41,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
                     spawningPlayer = SpawningPlayer.SecondPlayer;
                     break;
                 case SpawningPlayer.SecondPlayer:
-                    runner.Spawn(playerPrefab, Utils.GetFirstSpawnPoint("Second"), Quaternion.identity, player);
+                    runner.Spawn(playerPrefab, Utils.GetFirstSpawnPoint("First"), Quaternion.identity, player);
                     break;
                 default:
                     runner.Spawn(playerPrefab, Utils.GetFirstSpawnPoint("First"), Quaternion.identity, player);
@@ -68,13 +69,12 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
         }
     }
 
-
-
-
-
     public void OnConnectedToServer()
     {
-        
+        if (spawningPlayer == SpawningPlayer.SecondPlayer)
+        {
+            gameManager.PlayersLoaded();
+        }
     }
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {}
@@ -110,8 +110,6 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
     {}
     public void OnSceneLoadStart(NetworkRunner runner)
     {}
-
-
     public void OnConnectedToServer(NetworkRunner runner)
     {
         Debug.Log($"OnConnectedToServer");

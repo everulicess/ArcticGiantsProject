@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 7500503371293311807}
   - component: {fileID: 8316696263499430830}
   - component: {fileID: 3302294856914723565}
-  - component: {fileID: 6168810165067374736}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +62,7 @@ MonoBehaviour:
     _value: 0
     _inverse: 0
     _hash: -814817977
-  StateHashes: 00000000dec0b8185c8ff49d68345b76ec178d99
+  StateHashes: 00000000a144e748040000f7b41aa242115e45fd
   TriggerHashes: 00000000
 --- !u!65 &3302294856914723565
 BoxCollider:
@@ -78,19 +77,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 4.285904}
   m_Center: {x: 0, y: 0, z: 0.20170695}
---- !u!114 &6168810165067374736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2777624088450158025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab2ed72d0938ce64484d0a2ac0b88ecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorAnim: {fileID: 8036068813680051168}
 --- !u!1001 &7974845836894618892
 PrefabInstance:
   m_ObjectHideFlags: 0

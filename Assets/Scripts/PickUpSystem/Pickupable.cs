@@ -21,7 +21,7 @@ public class Pickupable : MonoBehaviour
         {
             if (isConnected == false)
             {
-                Debug.Log("IsNOTconnected");
+                //Debug.Log("IsNOTconnected");
                 float x = anchorPoint.transform.position.x + 0.3f;
                 float y = anchorPoint.transform.position.y;
                 float z = anchorPoint.transform.position.z;

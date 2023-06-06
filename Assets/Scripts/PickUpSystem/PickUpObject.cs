@@ -24,6 +24,7 @@ public class PickUpObject : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        
         if (isCarrying)
         {
             
@@ -56,7 +57,9 @@ public class PickUpObject : MonoBehaviour
 
             Ray ray = mainCamera.GetComponent<Camera>().ScreenPointToRay(new Vector3(x, y));
 
+            
             RaycastHit hit;
+
             if (Physics.Raycast(ray, out hit))
             {
                 p = hit.collider.GetComponent<Pickupable>();
