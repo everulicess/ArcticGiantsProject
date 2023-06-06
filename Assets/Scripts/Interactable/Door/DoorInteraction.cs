@@ -14,7 +14,7 @@ public class DoorInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            Interacting();
+         Interacting();
         
     }
     void Interacting()

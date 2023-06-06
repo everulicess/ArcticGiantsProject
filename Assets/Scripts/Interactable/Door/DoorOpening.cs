@@ -12,7 +12,8 @@ public class DoorOpening : MonoBehaviour
     [SerializeField]
     Slider energyBar;
 
-    public bool isDoorOpened = false;
+    [Networked]
+    public bool isDoorOpened { get; set; } = false;
     int numberOfDoors;
     private void Update()
     {
