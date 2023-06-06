@@ -19,7 +19,7 @@ public class GameBehaviour : MonoBehaviour
     Slider energyBar;
 
     //Lights
-    public int numberOfLightsOn = 5;
+    public int numberOfLightsOn = 9;
 
     //Tools for repairing
     public int wrench=0;
@@ -50,6 +50,7 @@ public class GameBehaviour : MonoBehaviour
 
     enum GameState
     {
+        WaitingForPlayerLoaded,
         PlayingVideo,
         RepairingStuff,
         WaitingForRescue,
@@ -69,6 +70,9 @@ public class GameBehaviour : MonoBehaviour
         
         switch (gameState)
         {
+            case GameState.WaitingForPlayerLoaded:
+                PlayersLoaded();
+                ;break;
             case GameState.PlayingVideo:
                 PlayingVideo(vp);
                 break;
@@ -89,6 +93,11 @@ public class GameBehaviour : MonoBehaviour
         }
     }
     //GameMethods
+    //WaitingForPlayerLoaded
+    public void PlayersLoaded()
+    {
+        gameState = GameState.PlayingVideo;
+    }
 
     //Playing introduction video
     //videoPlayer

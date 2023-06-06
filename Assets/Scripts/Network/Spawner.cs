@@ -26,6 +26,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
         SecondPlayer
 
     }
+    
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
 
@@ -68,13 +69,12 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
         }
     }
 
-
-
-
-
     public void OnConnectedToServer()
     {
-        
+        if (spawningPlayer == SpawningPlayer.SecondPlayer)
+        {
+            gameManager.PlayersLoaded();
+        }
     }
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {}
@@ -110,8 +110,6 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
     {}
     public void OnSceneLoadStart(NetworkRunner runner)
     {}
-
-
     public void OnConnectedToServer(NetworkRunner runner)
     {
         Debug.Log($"OnConnectedToServer");
