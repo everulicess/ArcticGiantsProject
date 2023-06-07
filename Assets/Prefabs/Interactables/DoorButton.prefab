@@ -157,8 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2ed72d0938ce64484d0a2ac0b88ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   doors: []
   energyBar: {fileID: 0}
+  _isDoorOpened: 0
 --- !u!65 &6257581749892529342
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -189,9 +191,10 @@ MonoBehaviour:
   DestroyWhenStateAuthorityLeaves: 0
   AllowStateAuthorityOverride: 1
   AoiPositionSource: {fileID: 0}
-  Flags: 2305
+  Flags: 67841
   NetworkGuid:
     RawGuidValue: 8d8f4719353c1404e9fbc702e59022da
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 6257581749892529343}
   SimulationBehaviours: []
