@@ -32,9 +32,10 @@ public class DoorInteraction : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 var objectHit = hit.collider.gameObject.GetComponent<DoorOpening>();
-
+                objectHit.isInteracting = true;
                 if (hit.collider.CompareTag("Door"))
                 {
+                    
                     objectHit.isDoorOpened = !objectHit.isDoorOpened;
 
                     Debug.Log($"DOOR BUTTON HIT {objectHit.isDoorOpened}");

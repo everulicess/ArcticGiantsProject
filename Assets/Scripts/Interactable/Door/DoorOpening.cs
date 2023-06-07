@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Fusion;
-using UnityEngine.UI;
+using UnityEngine;
 
 public class DoorOpening : NetworkBehaviour
 {
@@ -12,6 +9,8 @@ public class DoorOpening : NetworkBehaviour
 
     [Networked]
     public bool isDoorOpened { get; set; }
+
+    public bool isInteracting = false;
     int numberOfDoors;
     private void Start()
     {
@@ -19,26 +18,29 @@ public class DoorOpening : NetworkBehaviour
     }
     public override void FixedUpdateNetwork()
     {
-        if (isDoorOpened)
+        if (isInteracting)
         {
-            CloseDoorRPC();
-            Debug.Log($"CLOSE {this.gameObject.name} ñldfodishfjdsoifosf");
+            if (isDoorOpened)
+            {
+                OpenDoorRPC();
+                Debug.Log($"OPEN {this.gameObject.name} ñldfodishfjdsoifosf");
+            }
+            else
+            {
+                CloseDoorRPC();
+                Debug.Log($"CLOSE {this.gameObject.name} ñldfodishfjdsoifosf");
+            }
         }
-        else
-        {
-            OpenDoorRPC();
-            Debug.Log($"OPEN {this.gameObject.name} ñldfodishfjdsoifosf");
-        }
+        
     }
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void OpenDoorRPC()
     {
-        Debug.Log("OpenDoor");
+        isInteracting = false;
         //isDoorOpened = false;
         numberOfDoors = doors.Length;
         foreach (var doors in doors)
         {
-            
             //doors.GetComponentInChildren<Animator>().SetBool("openDoor",true);
             doors.GetComponentInChildren<Animator>().Play("ClosingDoor");
         }
@@ -47,7 +49,7 @@ public class DoorOpening : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void CloseDoorRPC()
     {
-        Debug.Log("CloseDoor");
+        isInteracting = false;
         //isDoorOpened = true;
         foreach (var doors in doors)
         {
