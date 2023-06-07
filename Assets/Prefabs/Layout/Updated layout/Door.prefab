@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7500503371293311807}
   - component: {fileID: 8316696263499430830}
-  - component: {fileID: 3302294856914723565}
   m_Layer: 0
   m_Name: Door
   m_TagString: Door
@@ -48,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   Animator: {fileID: 8036068813680051168}
-  TotalWords: 1
+  TotalWords: 0
   SyncSettings: 79
   FloatAccuracy:
     _value: 0
@@ -64,19 +63,6 @@ MonoBehaviour:
     _hash: -814817977
   StateHashes: 000000007147ba07d4035db8b41aa242115e45fd
   TriggerHashes: 00000000
---- !u!65 &3302294856914723565
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2777624088450158025}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 4.285904}
-  m_Center: {x: 0, y: 0, z: 0.20170695}
 --- !u!1001 &7974845836894618892
 PrefabInstance:
   m_ObjectHideFlags: 0
