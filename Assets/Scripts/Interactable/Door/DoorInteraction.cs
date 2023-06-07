@@ -14,13 +14,13 @@ public class DoorInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            Interacting();
+         Interacting();
         
     }
     void Interacting()
     {
         
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             int x = Screen.width / 2;
             int y = Screen.height / 2;
@@ -35,14 +35,16 @@ public class DoorInteraction : MonoBehaviour
 
                 if (hit.collider.CompareTag("Door"))
                 {
-                    if (objectHit.isDoorOpened == true)
-                    {
-                        objectHit.isDoorOpened = false;
-                    }
-                    else
-                    {
-                        objectHit.isDoorOpened = true;
-                    }
+                    objectHit.isDoorOpened = !objectHit.isDoorOpened;
+
+                    //if (objectHit.isDoorOpened == true)
+                    //{
+                    //    objectHit.isDoorOpened = false;
+                    //}
+                    //else
+                    //{
+                    //    objectHit.isDoorOpened = true;
+                    //}
                     
 
                 }

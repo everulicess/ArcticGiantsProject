@@ -31,11 +31,6 @@ public class Lightswitch : NetworkBehaviour
     {
         if (isNear)
         {
-            int x_ = Screen.width / 2;
-            int y_ = Screen.height / 2;
-            Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
-            Debug.DrawRay(new Vector3(x_, y_), forward, Color.red);
-
             if (!characterMovementHandler)
             {
                 characterMovementHandler = player.GetComponent<CharacterMovementHandler>();

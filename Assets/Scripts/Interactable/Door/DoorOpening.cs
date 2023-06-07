@@ -4,7 +4,7 @@ using UnityEngine;
 using Fusion;
 using UnityEngine.UI;
 
-public class DoorOpening : MonoBehaviour
+public class DoorOpening : NetworkBehaviour
 {
     [SerializeField]
     GameObject[] doors;
@@ -12,41 +12,45 @@ public class DoorOpening : MonoBehaviour
     [SerializeField]
     Slider energyBar;
 
-    public bool isDoorOpened = false;
+    [Networked]
+    public bool isDoorOpened { get; set; }
     int numberOfDoors;
     private void Update()
     {
         if (isDoorOpened)
         {
-            CloseDoor();
+            CloseDoorRPC();
+            Debug.Log($"CLOSE {this.gameObject.name} ñldfodishfjdsoifosf");
         }
         else
         {
-            OpenDoor();
+            OpenDoorRPC();
+            Debug.Log($"OPEN {this.gameObject.name} ñldfodishfjdsoifosf");
         }
     }
     [Rpc(RpcSources.All, RpcTargets.All)]
-    public void OpenDoor()
+    public void OpenDoorRPC()
     {
         Debug.Log("OpenDoor");
-        //isDoorOpened = true;
+        //isDoorOpened = false;
         numberOfDoors = doors.Length;
         foreach (var doors in doors)
         {
             
-            doors.GetComponentInChildren<Animator>().SetBool("openDoor",true);
+            //doors.GetComponentInChildren<Animator>().SetBool("openDoor",true);
             doors.GetComponentInChildren<Animator>().Play("ClosingDoor");
         }
     }
+
     [Rpc(RpcSources.All, RpcTargets.All)]
-    public void CloseDoor()
+    public void CloseDoorRPC()
     {
         Debug.Log("CloseDoor");
-        //isDoorOpened = false;
+        //isDoorOpened = true;
         foreach (var doors in doors)
         {
             doors.GetComponentInChildren<Animator>().Play("OpeningDoor");
-            doors.GetComponentInChildren<Animator>().SetBool("openDoor", false);
+            //doors.GetComponentInChildren<Animator>().SetBool("openDoor", false);
             
         }
     }
