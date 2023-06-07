@@ -106,7 +106,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6257581749892529345}
-  - component: {fileID: 6257581749892529344}
   - component: {fileID: 6257581749892529343}
   - component: {fileID: 6257581749892529342}
   - component: {fileID: -4500023802355322744}
@@ -133,18 +132,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6257581749892529344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6257581749892529347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5067a2969be5dee47a6c202a9fd85f6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6257581749892529343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,8 +145,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
-  doors: []
-  energyBar: {fileID: 0}
+  doors:
+  - {fileID: 0}
+  - {fileID: 0}
   _isDoorOpened: 0
 --- !u!65 &6257581749892529342
 BoxCollider:

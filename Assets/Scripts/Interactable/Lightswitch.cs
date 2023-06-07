@@ -27,7 +27,7 @@ public class Lightswitch : NetworkBehaviour
         interactText.enabled = false;
     }
     // Update is called once per frame
-    void Update()
+    public override void FixedUpdateNetwork()
     {
         if (isNear)
         {
@@ -60,6 +60,10 @@ public class Lightswitch : NetworkBehaviour
                 }
             }
         }
+    }
+    void Update()
+    {
+        
     }
     void OnTriggerEnter(Collider other)
     {

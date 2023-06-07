@@ -9,13 +9,15 @@ public class DoorOpening : NetworkBehaviour
     [SerializeField]
     GameObject[] doors;
 
-    [SerializeField]
-    Slider energyBar;
 
     [Networked]
     public bool isDoorOpened { get; set; }
     int numberOfDoors;
-    private void Update()
+    private void Start()
+    {
+        
+    }
+    public override void FixedUpdateNetwork()
     {
         if (isDoorOpened)
         {

@@ -20,7 +20,7 @@ public class DoorInteraction : MonoBehaviour
     void Interacting()
     {
         
-        if (Input.GetMouseButton(0))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             int x = Screen.width / 2;
             int y = Screen.height / 2;
@@ -37,6 +37,7 @@ public class DoorInteraction : MonoBehaviour
                 {
                     objectHit.isDoorOpened = !objectHit.isDoorOpened;
 
+                    Debug.Log($"DOOR BUTTON HIT {objectHit.isDoorOpened}");
                     //if (objectHit.isDoorOpened == true)
                     //{
                     //    objectHit.isDoorOpened = false;
