@@ -8,7 +8,7 @@ public class WiresConnected : MonoBehaviour
     private void Update()
     {
 
-        Debug.LogFormat("Wires: {0}", wiresConnected);
+        //Debug.LogFormat("Wires: {0}", wiresConnected);
     }
 
     public int ConnectedWires

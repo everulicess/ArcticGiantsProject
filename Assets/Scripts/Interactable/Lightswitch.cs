@@ -91,7 +91,7 @@ public class Lightswitch : NetworkBehaviour
         GameManager.lights += 1;
         luz.GetComponent<Light>().enabled = true;
         isLightOn = true;
-        Debug.Log("Light On");
+        //Debug.Log("Light On");
     }
     [Rpc(RpcSources.All, RpcTargets.All)]
     void TurnOffRPC()
@@ -99,7 +99,7 @@ public class Lightswitch : NetworkBehaviour
         GameManager.lights -= 1;
         luz.GetComponent<Light>().enabled = false;
         isLightOn = false;
-        Debug.Log("Light Off");
+        //Debug.Log("Light Off");
     }
 
 }

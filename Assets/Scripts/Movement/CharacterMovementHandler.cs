@@ -81,16 +81,7 @@ public class CharacterMovementHandler : NetworkBehaviour
                 {
                     isPlayerInteracting = false;
                 }
-                if (Input.GetKey(KeyCode.Y))
-                {
-                    Debug.Log("Dance");
-                    playerAnimator.SetBool("IsDancePlay", true);
-                }
-                else
-                {
-                    playerAnimator.SetBool("IsDancePlay", false);
-
-                }
+                
             }
             else
             {

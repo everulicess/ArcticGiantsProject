@@ -167,6 +167,7 @@ MonoBehaviour:
   - {fileID: 1564918783043312464}
   - {fileID: 7367788889003365341}
   - {fileID: 1851816038374725211}
+  - {fileID: -312997113693940801}
   SimulationBehaviours: []
 --- !u!114 &1564918783043312464
 MonoBehaviour:
@@ -274,6 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5067a2969be5dee47a6c202a9fd85f6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
 --- !u!114 &6678876647159747836
 MonoBehaviour:
   m_ObjectHideFlags: 0

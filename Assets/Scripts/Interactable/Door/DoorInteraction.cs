@@ -1,56 +1,130 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
-public class DoorInteraction : MonoBehaviour
+public class DoorInteraction : DoorOpening
 {
     Camera mainCamera;
+    DoorOpening objectHit;
+    bool buttonHit;
+    public bool isInteracting;
+    //bool isDoorOpened;
+
+    CharacterMovementHandler characterMovementHandler;
+
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera = GetComponentInChildren<Camera>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-         Interacting();
         
+        mainCamera = GetComponentInChildren<Camera>();
+        
+    }
+    private void Update()
+    {
+        characterMovementHandler = this.GetComponent<CharacterMovementHandler>();
+    }
+    // Update is called once per frame
+    public override void FixedUpdateNetwork()
+    {
+        
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    isInteracting = true;
+        //    Interacting();
+        //    objectHit.isInteracting = true;
+        //}
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    Interacting();
+        //}
+        if (characterMovementHandler.isPlayerInteracting)
+        {
+
+            Debug.Log("Player is interacting");
+            isInteracting = true;
+            characterMovementHandler.isPlayerInteracting = false;
+        }
+        else
+        {
+            isInteracting = false;
+        }
+        if (isInteracting)
+        {
+            Interacting();
+            //if (buttonHit)
+            //{
+                if (isDoorOpened)
+                {
+                    isDoorOpened = false;
+                    objectHit.OpenDoorRPC();
+                    //isInteracting = false;
+                }
+                else
+                {
+                    isDoorOpened = true;
+                    objectHit.CloseDoorRPC();
+                    //isInteracting = false;
+                }
+            //}
+            
+            
+        }
     }
     void Interacting()
     {
-        
-        if (Input.GetKeyDown(KeyCode.E))
+        int x = Screen.width / 2;
+        int y = Screen.height / 2;
+        Ray ray = mainCamera.GetComponent<Camera>().ScreenPointToRay(new Vector3(x, y));
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
         {
-            int x = Screen.width / 2;
-            int y = Screen.height / 2;
-            Ray ray = mainCamera.GetComponent<Camera>().ScreenPointToRay(new Vector3(x, y,1));
 
-
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            //isInteracting = true;
+            if (hit.collider.CompareTag("Door"))
             {
-                var objectHit = hit.collider.gameObject.GetComponent<DoorOpening>();
-                objectHit.isInteracting = true;
-                if (hit.collider.CompareTag("Door"))
-                {
-                    
-                    objectHit.isDoorOpened = !objectHit.isDoorOpened;
+                buttonHit = true;
+                objectHit = hit.collider.gameObject.GetComponent<DoorOpening>();
 
-                    Debug.Log($"DOOR BUTTON HIT {objectHit.isDoorOpened}");
-                    //if (objectHit.isDoorOpened == true)
-                    //{
-                    //    objectHit.isDoorOpened = false;
-                    //}
-                    //else
-                    //{
-                    //    objectHit.isDoorOpened = true;
-                    //}
-                    
+                //objectHit.isDoorOpened = !objectHit.isDoorOpened;
 
-                }
+                Debug.Log($"DOOR BUTTON HIT {objectHit.isDoorOpened}");
+
+            }
+            else
+            {
+                buttonHit = false;
             }
         }
+        //void Interacting()
+        //{
+        //    int x = Screen.width / 2;
+        //    int y = Screen.height / 2;
+        //    Ray ray = mainCamera.GetComponent<Camera>().ScreenPointToRay(new Vector3(x, y,1));
+
+        //    RaycastHit hit;
+
+        //    if (Physics.Raycast(ray, out hit))
+        //    {
+
+        //        if (hit.collider.CompareTag("Door"))
+        //        {
+        //            objectHit = hit.collider.gameObject.GetComponent<DoorOpening>();
+
+        //            //objectHit.isDoorOpened = !objectHit.isDoorOpened;
+
+        //            Debug.Log($"DOOR BUTTON HIT {objectHit.isDoorOpened}");
+        //            //if (objectHit.isDoorOpened == true)
+        //            //{
+        //            //    objectHit.isDoorOpened = false;
+        //            //}
+        //            //else
+        //            //{
+        //            //    objectHit.isDoorOpened = true;
+        //            //}
+        //        }
+        //    }
     }
 }
