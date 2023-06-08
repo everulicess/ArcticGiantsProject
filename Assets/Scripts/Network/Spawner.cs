@@ -4,19 +4,28 @@ using UnityEngine;
 using Fusion;
 using Fusion.Sockets;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
 {
     public NetworkPlayer playerPrefab;
     //other component
     CharacterInputHandler characterInputHandler;
+    SessionListUIHandler sessionListUIHandler;
 
     GameBehaviour gameManager;
-
+    private void Awake()
+    {
+        sessionListUIHandler = FindObjectOfType<SessionListUIHandler>(true);
+    }
     private void Start()
     {
-        gameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
-        spawningPlayer = SpawningPlayer.FirstPlayer;
+        if (SceneManager.GetActiveScene().name == "New modeled") 
+        {
+            gameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
+            spawningPlayer = SpawningPlayer.FirstPlayer;
+        }
+        
     }
     SpawningPlayer spawningPlayer;
 
@@ -99,7 +108,28 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
     public void OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message)
     {}
     public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList)
-    {}
+    {
+        if (sessionListUIHandler ==null)
+        {
+            return;
+        }
+        if (sessionList.Count == 0)
+        {
+            Debug.Log("Joined Lobby no sessions found");
+
+            sessionListUIHandler.OnNoSessionsFound();
+        }
+        else
+        {
+            sessionListUIHandler.ClearList();
+            foreach (SessionInfo sessionInfo in sessionList)
+            {
+                sessionListUIHandler.AddToList(sessionInfo);
+                Debug.Log($"Found session {sessionInfo.Name} playerCount {sessionInfo.PlayerCount}");
+            }
+            
+        }
+    }
     public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data)
     {}
     public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken)

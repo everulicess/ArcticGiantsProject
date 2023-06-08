@@ -7,7 +7,6 @@ public class DoorInteraction : DoorOpening
 {
     Camera mainCamera;
     DoorOpening objectHit;
-    bool buttonHit;
     public bool isInteracting;
     //bool isDoorOpened;
 
@@ -85,7 +84,6 @@ public class DoorInteraction : DoorOpening
             //isInteracting = true;
             if (hit.collider.CompareTag("Door"))
             {
-                buttonHit = true;
                 objectHit = hit.collider.gameObject.GetComponent<DoorOpening>();
 
                 //objectHit.isDoorOpened = !objectHit.isDoorOpened;
@@ -95,7 +93,6 @@ public class DoorInteraction : DoorOpening
             }
             else
             {
-                buttonHit = false;
             }
         }
         //void Interacting()
