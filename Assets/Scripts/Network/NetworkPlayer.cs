@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
+using UnityEngine.SceneManagement;
 
 public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
 {
@@ -13,10 +14,16 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
 
     public override void Spawned()
     {
+        bool isReadyScene = SceneManager.GetActiveScene().name == "Ready";
+
         if (Object.HasInputAuthority)
         {
             Local = this;
 
+            if (isReadyScene)
+            {
+                //localCameraHandler = new LocalCameraHandler();
+            }
             //Set the layer to the local players model
             Utils.SetRenderLayerInChildren(playerModel, LayerMask.NameToLayer("LocalPlayerModel"));
 
