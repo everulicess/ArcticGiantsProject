@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 using Fusion.Sockets;
+using UnityEngine.SceneManagement;
 using System;
 
 public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
@@ -12,11 +13,21 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
     CharacterInputHandler characterInputHandler;
 
     GameBehaviour gameManager;
+    SessionListUIHandler sessionListUIHandler;
 
+    private void Awake()
+    {
+        sessionListUIHandler = FindObjectOfType<SessionListUIHandler>(true);
+
+    }
     private void Start()
     {
-        gameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
-        spawningPlayer = SpawningPlayer.FirstPlayer;
+        if (SceneManager.GetActiveScene().name =="New modeled")
+        {
+            gameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
+            spawningPlayer = SpawningPlayer.FirstPlayer;
+        }
+        
     }
     SpawningPlayer spawningPlayer;
 
@@ -99,7 +110,29 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
     public void OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message)
     {}
     public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList)
-    {}
+    {
+        //Only update the list of sessions when the session list UI handler is active
+        if (sessionListUIHandler == null)
+            return;
+
+        if (sessionList.Count == 0)
+        {
+            Debug.Log("Joined lobby no sessions found");
+
+            sessionListUIHandler.OnNoSessionsFound();
+        }
+        else
+        {
+            sessionListUIHandler.ClearList();
+
+            foreach (SessionInfo sessionInfo in sessionList)
+            {
+                sessionListUIHandler.AddToList(sessionInfo);
+
+                Debug.Log($"Found session {sessionInfo.Name} playerCount {sessionInfo.PlayerCount}");
+            }
+        }
+    }
     public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data)
     {}
     public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken)
