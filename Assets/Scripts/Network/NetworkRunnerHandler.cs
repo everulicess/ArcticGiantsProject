@@ -14,7 +14,6 @@ public class NetworkRunnerHandler : MonoBehaviour
     public NetworkRunner networkRunnerPrefab;
 
     NetworkRunner networkRunner;
-    SessionInfo thisSesionInfo;
     private void Awake()
     {
         NetworkRunner networkRunnerInScene = FindObjectOfType<NetworkRunner>();
@@ -33,29 +32,10 @@ public class NetworkRunnerHandler : MonoBehaviour
             {
                 var clientTask = InitializeNetworkRunner(networkRunner, GameMode.AutoHostOrClient, "TestSession",NetAddress.Any(),SceneManager.GetActiveScene().buildIndex, null);
             }
-
         }
         
 
         Debug.Log($"Server NetworkRunner Started.");
-    }
-
-    private void FixedUpdate()
-    {
-        //if (SceneManager.GetActiveScene().name == "Ready")
-        //{
-        //    CheckIfSessionIsFull();
-        //}
-    }
-
-    void CheckIfSessionIsFull(SessionInfo thisSessionInfo)
-    {
-        //Debug.Log($"PLAYER COUNT IS {thisSesionInfo.PlayerCount} MAX PLAYERS ARE {thisSesionInfo.MaxPlayers}");
-        if (thisSesionInfo.PlayerCount == thisSesionInfo.MaxPlayers)
-        {
-            SceneManager.LoadScene("New modeled");
-        }
-        
     }
 
     protected virtual Task InitializeNetworkRunner(NetworkRunner runner, GameMode gameMode,string sessionName, NetAddress address, SceneRef scene, Action<NetworkRunner> initialized)
@@ -73,7 +53,6 @@ public class NetworkRunnerHandler : MonoBehaviour
             Address = address,
             Scene = scene,
             CustomLobbyName = "OurLobbyID",
-            PlayerCount = 2,
             SessionName = sessionName,
             Initialized = initialized,
             SceneManager = sceneManager
@@ -115,8 +94,9 @@ public class NetworkRunnerHandler : MonoBehaviour
     public void JoinGame(SessionInfo sessionInfo)
     {
         Debug.Log($"Join session {sessionInfo.Name}");
-        //thisSesionInfo = sessionInfo;
+
         //Join existing game as a client
         var clientTask = InitializeNetworkRunner(networkRunner, GameMode.Client, sessionInfo.Name, NetAddress.Any(), SceneManager.GetActiveScene().buildIndex, null);
+
     }
 }

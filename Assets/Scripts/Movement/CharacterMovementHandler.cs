@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
-using UnityEngine.SceneManagement;
 
 public class CharacterMovementHandler : NetworkBehaviour
 {
@@ -11,7 +10,6 @@ public class CharacterMovementHandler : NetworkBehaviour
     public Animator playerAnimator;
     float walkSpeed = 0f;
 
-    bool isRespawnRequested = false;
     //Other components
     NetworkCharacterControllerPrototypeCustom networkCharacterControllerPrototypeCustom;
     Camera localCamera;
@@ -24,15 +22,10 @@ public class CharacterMovementHandler : NetworkBehaviour
 
     private void Awake()
     {
-        if (SceneManager.GetActiveScene().name == "New modeled")
-        {
-            gameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
-            pickUpObject = GetComponent<PickUpObject>();
-
-        }
-
+        gameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
         networkCharacterControllerPrototypeCustom = GetComponent<NetworkCharacterControllerPrototypeCustom>();
         localCamera = GetComponentInChildren<Camera>();
+        pickUpObject = GetComponent<PickUpObject>();
     }
     // Start is called before the first frame update
     void Start()
@@ -42,18 +35,11 @@ public class CharacterMovementHandler : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if (isRespawnRequested)
+        if (gameManager.isPlayerControl)
         {
-            Respawn();
-        }
-        //Get Input from network
-        if (GetInput(out NetworkInputData networkInputData))
-        {
-            if (SceneManager.GetActiveScene().name == "New modeled")
+            //Get Input from network
+            if (GetInput(out NetworkInputData networkInputData))
             {
-            //if (gameManager.isPlayerControl)
-            //{
-
                 //Rotate the transform according to the client
                 transform.forward = networkInputData.aimForwardVector;
 
@@ -67,23 +53,16 @@ public class CharacterMovementHandler : NetworkBehaviour
                 moveDirection.Normalize();
 
                 networkCharacterControllerPrototypeCustom.Move(moveDirection);
+
                 //Jump
                 if (networkInputData.isJumpButtonPressed)
                 {
                     networkCharacterControllerPrototypeCustom.Jump();
                 }
-
+                //PickUp
                 if (networkInputData.isEInteractButtonPressed)
                 {
                     pickUpObject.Update();
-                }
-                if (networkInputData.isFInteractButtonPressed)
-                {
-                    isPlayerInteracting = true;
-                }
-                else
-                {
-                    isPlayerInteracting = false;
                 }
 
                 Vector2 walkVector = new Vector2(networkCharacterControllerPrototypeCustom.Velocity.x, networkCharacterControllerPrototypeCustom.Velocity.z);
@@ -93,14 +72,23 @@ public class CharacterMovementHandler : NetworkBehaviour
 
                 playerAnimator.SetFloat("WalkSpeed", walkSpeed);
 
-            //}
-                //PickUp
-                
+
+                if (networkInputData.isFInteractButtonPressed)
+                {
+                    isPlayerInteracting = true;
+                }
+                else
+                {
+                    isPlayerInteracting = false;
+                }
                 
             }
-            
+            else
+            {
+                return;
+            }
+        
 
-            
 
             //Check if we are fallen off the world
             CheckFallRespawn();
@@ -108,6 +96,8 @@ public class CharacterMovementHandler : NetworkBehaviour
             
         }
     }
+
+
     void CheckFallRespawn()
     {
         if (transform.position.y < -5)
@@ -117,21 +107,6 @@ public class CharacterMovementHandler : NetworkBehaviour
         }
     }
 
-    public void RequestRespawn()
-    {
-        isRespawnRequested = true;
-    }
 
-    void Respawn()
-    {
-        networkCharacterControllerPrototypeCustom.TeleportToPosition(Utils.GetFirstSpawnPoint("First"));
-
-        isRespawnRequested = false;
-    }
-
-    public void SetCharacterControllerEnabled(bool isEnabled)
-    {
-        networkCharacterControllerPrototypeCustom.Controller.enabled = isEnabled;
-    }
 
 }
