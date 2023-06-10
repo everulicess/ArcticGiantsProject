@@ -15,14 +15,22 @@ public class CharacterMovementHandler : NetworkBehaviour
     Camera localCamera;
     PickUpObject pickUpObject;
 
-    GameBehaviour gameManager;
+    
 
     //Variables
     public bool isPlayerInteracting = false;
 
     private void Awake()
     {
-        gameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
+
+        if (SceneManager.GetActiveScene().name == "New modeled")
+        {
+            
+            pickUpObject = GetComponent<PickUpObject>();
+
+        }
+
+
         networkCharacterControllerPrototypeCustom = GetComponent<NetworkCharacterControllerPrototypeCustom>();
         localCamera = GetComponentInChildren<Camera>();
         pickUpObject = GetComponent<PickUpObject>();
