@@ -20,7 +20,7 @@ public class GameBehaviour : MonoBehaviour
     Slider energyBar;
 
     //Lights
-    public int numberOfLightsOn = 9;
+    public int numberOfLightsOn = 5;
 
     //Tools for repairing
     public int wrench=0;

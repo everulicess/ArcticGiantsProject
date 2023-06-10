@@ -40,6 +40,6 @@ public class EnergyBar : MonoBehaviour
             // TODO: Handle out of Energy situation
         }
         //cahnging the text
-        numberOfLigthsText.text = $"{GameManager.lights}/5 Lights On";
+        numberOfLigthsText.text = $"{GameManager.lights}/5";
     }
 }
