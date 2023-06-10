@@ -276,6 +276,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  doors: []
+  _isDoorOpened: 0
+  isInteracting: 0
 --- !u!114 &6678876647159747836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,6 +448,7 @@ GameObject:
   - component: {fileID: 5079413436771874773}
   - component: {fileID: 1349043892223543498}
   - component: {fileID: 4728251053188776974}
+  - component: {fileID: 7387203037483186772}
   m_Layer: 8
   m_Name: Quad
   m_TagString: Untagged
@@ -517,6 +521,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7387203037483186772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817837442148495782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d7d5e76df12a046ad5588f24c249db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BlinkInterval: 0.5
 --- !u!1 &8599309157468778030
 GameObject:
   m_ObjectHideFlags: 0
