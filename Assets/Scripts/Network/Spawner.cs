@@ -37,41 +37,25 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
         SecondPlayer
 
     }
-
+    
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
 
         if (runner.IsServer)
         {
             Debug.Log("OnPlayerJoined we are server. Spawning player");
-            bool isReadyScene = SceneManager.GetActiveScene().name == "Ready";
-
-            //Vector3 spawnPoint;/*= Utils.GetFirstSpawnPoint("First");*/
-            //Vector3 secondSpawnPoint = Utils.GetFirstSpawnPoint("Second");
             
-                // Check if we are the host
-                if (runner.SessionInfo.MaxPlayers - player.PlayerId == 1)
-                    spawningPlayer = SpawningPlayer.FirstPlayer;
-                else
-                    spawningPlayer = SpawningPlayer.SecondPlayer;
-            
-
-            // Check if we are the host
-            //if (runner.SessionInfo.MaxPlayers - player.PlayerId == 1)
-            //    spawningPlayer = SpawningPlayer.FirstPlayer;
-            //else
-            //    spawningPlayer = SpawningPlayer.SecondPlayer;
             switch (spawningPlayer)
             {
                 case SpawningPlayer.FirstPlayer:
                     runner.Spawn(playerPrefab, Utils.GetFirstSpawnPoint("First"), Quaternion.identity, player);
-
+                    spawningPlayer = SpawningPlayer.SecondPlayer;
                     break;
                 case SpawningPlayer.SecondPlayer:
                     runner.Spawn(playerPrefab, Utils.GetFirstSpawnPoint("Second"), Quaternion.identity, player);
                     break;
                 default:
-                    runner.Spawn(playerPrefab, Utils.GetFirstSpawnPoint("Second"), Quaternion.identity, player);
+                    runner.Spawn(playerPrefab, Utils.GetFirstSpawnPoint("First"), Quaternion.identity, player);
                     break;
             }
 
@@ -98,10 +82,10 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnConnectedToServer()
     {
-        //if (spawningPlayer == SpawningPlayer.SecondPlayer)
-        //{
-        //    gameManager.PlayersLoaded();
-        //}
+        if (spawningPlayer == SpawningPlayer.SecondPlayer)
+        {
+            gameManager.PlayersLoaded();
+        }
     }
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {}
