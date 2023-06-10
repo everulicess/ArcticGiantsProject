@@ -82,7 +82,8 @@ GameObject:
   - component: {fileID: 1851816038374725211}
   - component: {fileID: -312997113693940801}
   - component: {fileID: 6678876647159747836}
-  - component: {fileID: 3879059726917644078}
+  - component: {fileID: -121022372701354917}
+  - component: {fileID: -6742316299394106608}
   m_Layer: 0
   m_Name: NetworkPlayerPF
   m_TagString: Player
@@ -276,6 +277,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  doors: []
+  _isDoorOpened: 0
+  isInteracting: 0
 --- !u!114 &6678876647159747836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affc6ff25fb2ec74aa48e2aa32139291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3879059726917644078
+--- !u!114 &-121022372701354917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,10 +301,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 5066902830116337295}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d106fd1055eb364fa3e043940c468a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 00589bf13f632774db54a41c60eccf79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionKey: 101
+--- !u!114 &-6742316299394106608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5066902830116337295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a61e06d1894ec154d951d61492f4526d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnItemCollected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5066902830349946236
 GameObject:
   m_ObjectHideFlags: 0
