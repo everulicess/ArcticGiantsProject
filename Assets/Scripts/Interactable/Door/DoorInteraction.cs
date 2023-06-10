@@ -95,6 +95,7 @@ public class DoorInteraction : DoorOpening
             }
             else
             {
+                objectHit = null;
                 buttonHit = false;
             }
         }
