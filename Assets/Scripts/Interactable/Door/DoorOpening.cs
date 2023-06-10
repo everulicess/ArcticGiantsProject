@@ -90,7 +90,7 @@ public class DoorOpening : NetworkBehaviour
             
             
         }
-        //isDoorOpened = false;
+        isDoorOpened = false;
     }
 
     [Rpc(RpcSources.All, RpcTargets.All)]
@@ -105,7 +105,7 @@ public class DoorOpening : NetworkBehaviour
             
             
         }
-        //isDoorOpened = true;
+        isDoorOpened = true;
     }
 
 }

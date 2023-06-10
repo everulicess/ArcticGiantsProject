@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   playerModel: {fileID: 1826722507770331664}
+  localCameraHandler: {fileID: 280137778332367243}
 --- !u!114 &5261514834335369281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +277,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  doors: []
+  _isDoorOpened: 0
+  localCamera: {fileID: 5066902830349946224}
+  isInteracting: 0
 --- !u!114 &6678876647159747836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraAnchorPoint: {fileID: 2553256965282717666}
+  localCamera: {fileID: 0}
 --- !u!1 &7817837442148495782
 GameObject:
   m_ObjectHideFlags: 0

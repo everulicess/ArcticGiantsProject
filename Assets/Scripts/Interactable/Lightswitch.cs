@@ -31,22 +31,10 @@ public class Lightswitch : NetworkBehaviour
     {
         if (isNear)
         {
-            if (!characterMovementHandler)
-            {
-                characterMovementHandler = player.GetComponent<CharacterMovementHandler>();
-            }
-
-            if (characterMovementHandler.isPlayerInteracting)
-            {
-
-                Debug.Log("Player is interacting");
-                isInteracting = true;
-                characterMovementHandler.isPlayerInteracting = false;
-            }
-            else
-            {
-                isInteracting = false;
-            }
+            //if (!characterMovementHandler)
+            //{
+            //    characterMovementHandler = player.GetComponent<CharacterMovementHandler>();
+            //}
 
             if (isInteracting)
             {
@@ -70,6 +58,22 @@ public class Lightswitch : NetworkBehaviour
         player = other;
         if (other.CompareTag("Player"))
         {
+
+            if (!characterMovementHandler)
+            {
+                characterMovementHandler = player.GetComponent<CharacterMovementHandler>();
+            }
+            if (characterMovementHandler.isPlayerInteracting)
+            {
+                Debug.Log("Player is interacting");
+                isInteracting = true;
+                characterMovementHandler.isPlayerInteracting = false;
+            }
+            else
+            {
+                isInteracting = false;
+            }
+
             interactText.enabled = true;
             isNear = true;
             Debug.Log("Player is near");

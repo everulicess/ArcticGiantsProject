@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
+using UnityEngine.SceneManagement;
 
 public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
 {
@@ -9,35 +10,49 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
 
     public Transform playerModel;
 
+    public LocalCameraHandler localCameraHandler;
 
 
     public override void Spawned()
     {
+
         if (Object.HasInputAuthority)
         {
             Local = this;
 
-            //Set the layer to the local players model
-            Utils.SetRenderLayerInChildren(playerModel, LayerMask.NameToLayer("LocalPlayerModel"));
+           
+                //Sets the layer of the local players model
+                Utils.SetRenderLayerInChildren(playerModel, LayerMask.NameToLayer("LocalPlayerModel"));
 
-            //Disable main camera
-            Camera.main.gameObject.SetActive(false);
+                ////Disable main camera
+                if (Camera.main != null)
+                    Camera.main.gameObject.SetActive(false);
 
+                //Enable the local camera
+                localCameraHandler.localCamera.enabled = true;
+                localCameraHandler.gameObject.SetActive(true);
+
+
+                ////Detach camera if enabled
+                localCameraHandler.transform.parent = null;
+
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            
             Debug.Log("Spawned local player");
         }
         else 
         {
-            //Disable the camera if we are not the local`player
-            Camera localCamera = GetComponentInChildren<Camera>();
-            localCamera.enabled = false;
+            
+            //Disable the local camera for remote players
+            localCameraHandler.localCamera.enabled = false;
+            localCameraHandler.gameObject.SetActive(false);
 
-            //Only 1 audio listener is allowed in the scene so disable remote players audio listener
-            AudioListener audioListener = GetComponentInChildren<AudioListener>();
-            audioListener.enabled = false;
-
-            Debug.Log("Spawned remote player");
-
+            Debug.Log($"{Time.time} Spawned remote player");
         }
+
+        //Set the Player as a player object
+        //Runner.SetPlayerObject(Object.InputAuthority, Object);
 
         //Makes it easy to differenciate players
         transform.name = $"P_{Object.Id}";
@@ -49,4 +64,32 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
             Runner.Despawn(Object);
 
     }
+
+    //void OnDestroy()
+    //{
+    //    //Get rid of the local camera if we get destroyed as a new one will be spawned with the new Network player
+    //    if (localCameraHandler != null)
+    //        Destroy(localCameraHandler.gameObject);
+    //}
+
+    //void OnEnable()
+    //{
+    //    SceneManager.sceneLoaded += OnSceneLoaded;
+    //}
+
+    //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    //{
+    //    Debug.Log($"{Time.time} OnSceneLoaded: " + scene.name);
+
+    //    if (scene.name != "Ready")
+    //    {
+    //        //Tell the host that we need to perform the spawned code manually. 
+    //        if (Object.HasStateAuthority && Object.HasInputAuthority)
+    //            Spawned();
+
+    //        if (Object.HasStateAuthority)
+    //            GetComponent<CharacterMovementHandler>().RequestRespawn();
+    //    }
+    //}
+
 }
