@@ -5,9 +5,10 @@ using Fusion;
 
 public class DoorInteraction : DoorOpening
 {
-    Camera mainCamera;
+    [SerializeField]
+    Camera localCamera;
     DoorOpening objectHit;
-    bool buttonHit;
+    //bool buttonHit;
     public bool isInteracting;
     //bool isDoorOpened;
 
@@ -17,17 +18,17 @@ public class DoorInteraction : DoorOpening
     void Start()
     {
         
-        mainCamera = GetComponentInChildren<Camera>();
+        //localCamera = GetComponentInChildren<Camera>();
         
     }
     private void Update()
     {
-        characterMovementHandler = this.GetComponent<CharacterMovementHandler>();
+       
     }
     // Update is called once per frame
     public override void FixedUpdateNetwork()
     {
-        
+        characterMovementHandler = this.gameObject.GetComponent<CharacterMovementHandler>();
         //if (Input.GetKeyDown(KeyCode.E))
         //{
         //    isInteracting = true;
@@ -75,8 +76,8 @@ public class DoorInteraction : DoorOpening
     {
         int x = Screen.width / 2;
         int y = Screen.height / 2;
-        Ray ray = mainCamera.GetComponent<Camera>().ScreenPointToRay(new Vector3(x, y));
-
+        Ray ray = localCamera.GetComponent<Camera>().ScreenPointToRay(new Vector3(x, y));
+        
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit))
@@ -85,9 +86,10 @@ public class DoorInteraction : DoorOpening
             //isInteracting = true;
             if (hit.collider.CompareTag("Door"))
             {
-                buttonHit = true;
+                //buttonHit = true;
                 objectHit = hit.collider.gameObject.GetComponent<DoorOpening>();
 
+                isDoorOpened = objectHit.isDoorOpened;
                 //objectHit.isDoorOpened = !objectHit.isDoorOpened;
 
                 Debug.Log($"DOOR BUTTON HIT {objectHit.isDoorOpened}");
@@ -95,7 +97,7 @@ public class DoorInteraction : DoorOpening
             }
             else
             {
-                buttonHit = false;
+                //buttonHit = false;
             }
         }
         //void Interacting()
