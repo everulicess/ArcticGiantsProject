@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    
-        public void Collect()
-        {
-           
-            gameObject.SetActive(false);
-        }
-    
+    public string Test;
+    public int scoreValue;
+
+    // Define any additional properties or methods for the item
+    // For example, you can add visual effects, sound effects, etc.
 }
 
 
