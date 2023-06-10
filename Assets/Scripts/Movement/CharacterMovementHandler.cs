@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
+using UnityEngine.SceneManagement;
 
 public class CharacterMovementHandler : NetworkBehaviour
 {
@@ -15,7 +16,7 @@ public class CharacterMovementHandler : NetworkBehaviour
     Camera localCamera;
     PickUpObject pickUpObject;
 
-    
+    GameBehaviour gameManager;
 
     //Variables
     public bool isPlayerInteracting = false;
@@ -25,7 +26,7 @@ public class CharacterMovementHandler : NetworkBehaviour
 
         if (SceneManager.GetActiveScene().name == "New modeled")
         {
-            
+            gameManager = FindObjectOfType<GameBehaviour>();
             pickUpObject = GetComponent<PickUpObject>();
 
         }
