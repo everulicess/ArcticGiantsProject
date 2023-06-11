@@ -15,7 +15,7 @@ public class LocalCameraHandler : MonoBehaviour
 
     //Other components
     NetworkCharacterControllerPrototypeCustom networkCharacterControllerPrototypeCustom;
-    public Camera localCamera;
+    Camera localCamera;
 
     private void Awake()
     {
