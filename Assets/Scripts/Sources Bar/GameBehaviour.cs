@@ -23,10 +23,10 @@ public class GameBehaviour : MonoBehaviour
     public int numberOfLightsOn = 5;
 
     //Tools for repairing
-    public int wrench = 0;
-    public int screwdriver = 0;
-    public int pliers = 0;
-    public int wires = 0;
+    public int wrench=0;
+    public int screwdriver=0;
+    public int pliers=0;
+    public int wires=0;
 
     //Id for Activating Signals
     public bool hasID = false;
@@ -68,12 +68,12 @@ public class GameBehaviour : MonoBehaviour
     }
     private void Update()
     {
-
+        
         switch (gameState)
         {
             case GameState.WaitingForPlayerLoaded:
                 PlayersLoaded();
-                ; break;
+                ;break;
             case GameState.PlayingVideo:
                 PlayingVideo(vp);
                 break;
@@ -117,10 +117,10 @@ public class GameBehaviour : MonoBehaviour
     }
 
     //Repairing phase
-
+   
     void RepairingStuff()
     {
-
+        
         OxygenCheck();
         if (isTableFixed)
         {
@@ -196,5 +196,3 @@ public class GameBehaviour : MonoBehaviour
         }
     }
 }
-
-

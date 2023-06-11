@@ -29,8 +29,6 @@ public class CubePicking : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                CollectItem(this.gameObject);  // Call the method here.
-
                 switch (itemName)
                 {
                     case "wires":
@@ -51,16 +49,6 @@ public class CubePicking : MonoBehaviour
         }
     }
 
-
-    private void CollectItem(GameObject item)
-    {
-        ItemIndicator indicator = item.GetComponent<ItemIndicator>();
-        if (indicator != null)
-        {
-            indicator.RemoveExclamationMark();
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -76,4 +64,3 @@ public class CubePicking : MonoBehaviour
         }
     }
 }
-

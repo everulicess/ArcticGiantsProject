@@ -19,6 +19,6 @@ public class ToolsUI : MonoBehaviour
     void Update()
     {
         wiresText.text = $"wires {gameManager.wires}";
-        screwdriverText.text = $"screwdriver {gameManager.screwdriver}";
+        screwdriverText.text = $"wires {gameManager.screwdriver}";
     }
 }
