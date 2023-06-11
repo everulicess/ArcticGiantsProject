@@ -15,6 +15,7 @@ public class ChangeButtonColor : MonoBehaviour
         rend.enabled = true;
         rend.sharedMaterial = buttonColors[0];
     }
+
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void ChangeColorRPC(string buttonState)
     {

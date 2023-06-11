@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 
-public class TableScript : MonoBehaviour
+public class TableScript : NetworkBehaviour
 {
     [SerializeField]
     GameObject timer;
@@ -16,8 +16,9 @@ public class TableScript : MonoBehaviour
 
 
     TableState tableState;
-
-  
+    [SerializeField]
+    EnergyBar energyBar;
+    
     public bool tableNeedsFixing { get; set; } = true;
     [Networked]
     public bool TableIsFixed { get; set; } = false;
@@ -37,12 +38,14 @@ public class TableScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public override void FixedUpdateNetwork()
     {
         switch (tableState)
         {
             case TableState.NeedsFixing:
                 NeedsFixing();
+                Debug.Log("Increasing energy because it's broken");
+                energyBar.decreaseRate += 0.75f;
                 ; break;
             case TableState.Fixed:
                 Fixed();
