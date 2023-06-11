@@ -16,12 +16,11 @@ public class GameBehaviour : MonoBehaviour
     //Resources
     [SerializeField]
     Slider oxygenBar;
-
     [SerializeField]
     Slider energyBar;
 
     //Lights
-    public int numberOfLightsOn = 9;
+    public int numberOfLightsOn = 5;
 
     //Tools for repairing
     public int wrench = 0;
@@ -61,12 +60,12 @@ public class GameBehaviour : MonoBehaviour
 
 
     }
-    //private void Awake()
-    //{
+    private void Awake()
+    {
         //timeUntilRes = GameObject.Find("Timer").GetComponent<Timer>();
         //oxygenBar = GameObject.Find("OxygenBar").GetComponent<OxygenBar>();
         //energyBar = GameObject.Find("ElectricityBar").GetComponent<EnergyBar>();
-    //}
+    }
     private void Update()
     {
 
@@ -166,16 +165,9 @@ public class GameBehaviour : MonoBehaviour
     {
         if (isOxygenFixed)
         {
-            //If is fixed and have energy
-                //oxygen increases 1
-                //consumes energy 0.5
-              //if there is no energy
-                //oxygen decrease 1
-            oxygenBar.GetComponent<OxygenBar>().decreaseRate = -1f;
-            energyBar.GetComponent<EnergyBar>().decreaseRate += 0.5f;
+            oxygenBar.GetComponent<OxygenBar>().currentOxygen += 15 * Time.deltaTime;
             if (energyBar.GetComponent<EnergyBar>().currentEnergy <= 0)
             {
-                oxygenBar.GetComponent<OxygenBar>().decreaseRate = 1f;
                 if (oxygenBar.GetComponent<OxygenBar>().currentOxygen <= 0)
                 {
                     gameState = GameState.Dead;
@@ -184,9 +176,8 @@ public class GameBehaviour : MonoBehaviour
         }
         else
         {
-            //if is not fixed
-            //oxygen decreases 1
-            oxygenBar.GetComponent<OxygenBar>().decreaseRate = 1f;
+            oxygenBar.GetComponent<OxygenBar>().currentOxygen -= 15 * Time.deltaTime;
+            energyBar.GetComponent<EnergyBar>().currentEnergy -= 5 * Time.deltaTime;
             if (oxygenBar.GetComponent<OxygenBar>().currentOxygen <= 0)
             {
                 gameState = GameState.Dead;

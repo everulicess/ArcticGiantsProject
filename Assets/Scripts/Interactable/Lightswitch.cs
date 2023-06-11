@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 using System;
-using UnityEngine.UI;
 using TMPro;
 
 public class Lightswitch : NetworkBehaviour
@@ -18,14 +17,12 @@ public class Lightswitch : NetworkBehaviour
     bool isInteracting = false;
     Collider player;
 
-    EnergyBar energyBar;
     public TextMeshPro interactText;
     [Networked]
     public bool isLightOn { get; set; } = true;
 
     private void Start()
     {
-        energyBar = FindObjectOfType<EnergyBar>();
         GameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
         interactText.enabled = false;
     }
@@ -64,6 +61,10 @@ public class Lightswitch : NetworkBehaviour
             }
         }
     }
+    void Update()
+    {
+        
+    }
     void OnTriggerEnter(Collider other)
     {
         player = other;
@@ -87,9 +88,6 @@ public class Lightswitch : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.All)]
     void TurnOnRPC()
     {
-        energyBar.decreaseRate += 0.25f;
-        Debug.Log($"{this.gameObject.name} is CONSUMING {energyBar.decreaseRate} energy");
-
         GameManager.lights += 1;
         luz.GetComponent<Light>().enabled = true;
         isLightOn = true;
@@ -98,8 +96,6 @@ public class Lightswitch : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.All)]
     void TurnOffRPC()
     {
-        energyBar.decreaseRate -= 0.25f;
-        Debug.Log($"{this.gameObject.name} is not consuming energy");
         GameManager.lights -= 1;
         luz.GetComponent<Light>().enabled = false;
         isLightOn = false;
