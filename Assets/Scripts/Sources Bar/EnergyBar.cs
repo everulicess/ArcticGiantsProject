@@ -7,14 +7,13 @@ using TMPro;
 public class EnergyBar : MonoBehaviour
 {
     public TextMeshProUGUI numberOfLigthsText;
-    float maxEnergy = 1000f;
+    float maxEnergy = 675f;
     public float currentEnergy;
-    float decreaseRate = 1f;
-    float energyDecreaseRateWithLightsOn = 2f;
+    public float decreaseRate = 2.25f;
+    //float energyDecreaseRateWithLightsOn = 2f;
 
 
     GameBehaviour GameManager;
-    int amountOfLightsOn;
 
     public Slider EnergyBarSlider;
 
@@ -28,18 +27,22 @@ public class EnergyBar : MonoBehaviour
 
     private void Update()
     {
-        amountOfLightsOn = GameManager.lights;
-            // Decrease Energy faster if lights are on
-            currentEnergy -= ((energyDecreaseRateWithLightsOn * amountOfLightsOn) + decreaseRate) * Time.deltaTime;
-        
-        EnergyBarSlider.value = currentEnergy;
-
-        // Check if out of Energy
         if (currentEnergy <= 0)
         {
-            // TODO: Handle out of Energy situation
+            currentEnergy = 0;
         }
+        else if (currentEnergy > maxEnergy)
+        {
+            currentEnergy = maxEnergy;
+
+        }
+        // Decrease Energy faster if lights are on
+        //currentEnergy += (/*(energyDecreaseRateWithLightsOn * amountOfLightsOn)*/ +decreaseRate) * Time.deltaTime;
+        currentEnergy -= decreaseRate * Time.deltaTime;
+
+        EnergyBarSlider.value = currentEnergy;
+
         //cahnging the text
-        numberOfLigthsText.text = $"{GameManager.lights}/5";
+        numberOfLigthsText.text = $"{GameManager.lights}/9";
     }
 }
