@@ -63,4 +63,13 @@ public class CubePicking : MonoBehaviour
             isPlayerNear = false;
         }
     }
-}
+
+    private void CollectItem(GameObject item)
+    {
+        ItemIndicator indicator = item.GetComponent<ItemIndicator>();
+        if (indicator != null)
+        {
+            indicator.RemoveExclamationMark();
+        }
+    }
+    }
