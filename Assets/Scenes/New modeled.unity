@@ -7435,7 +7435,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404434925}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: c45f53463125c64458045d726f9a3a7e, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 6729f855e0a448c40a54545b4b5b551f, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -7451,13 +7451,13 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 0.669
+  - 0.77
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 0
-  m_SkipOnDrop: 1
+  m_SkipOnDrop: 0
   m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
@@ -11367,6 +11367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 639121601}
   - component: {fileID: 639121602}
+  - component: {fileID: 639121603}
   m_Layer: 0
   m_Name: Video
   m_TagString: Untagged
@@ -11403,8 +11404,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e44a371c9e5d842bcd86c24cb462e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   videoPlayer: {fileID: 404434927}
   canvasUI: {fileID: 9206288}
+--- !u!114 &639121603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639121600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 133633
+  NetworkGuid:
+    RawGuidValue: 52e7dd3f12524a9595327542ae7c7362
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 639121602}
+  SimulationBehaviours: []
 --- !u!1 &644460651
 GameObject:
   m_ObjectHideFlags: 0
@@ -15129,6 +15155,7 @@ GameObject:
   - component: {fileID: 898589708}
   - component: {fileID: 898589707}
   - component: {fileID: 898589709}
+  - component: {fileID: 898589710}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -15147,8 +15174,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.9330564, y: 11.194903, z: 8.5828495}
-  m_Center: {x: -0.1495081, y: 5.097451, z: 0.40605906}
+  m_Size: {x: 6.9330564, y: 11.194903, z: 5.6157084}
+  m_Center: {x: -0.1495081, y: 5.097451, z: 4.074368}
 --- !u!4 &898589708
 Transform:
   m_ObjectHideFlags: 0
@@ -15182,8 +15209,32 @@ MonoBehaviour:
   _interpolationDataSource: 0
   timer: {fileID: 2009258899}
   damagedParticleSystem: {fileID: 2144107417}
-  energyBar: {fileID: 0}
+  energyBar: {fileID: 1210845795}
   _TableIsFixed: 0
+--- !u!114 &898589710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898589706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2561
+  NetworkGuid:
+    RawGuidValue: 7ccf668161de41659ec20dc04bc865f9
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 898589709}
+  SimulationBehaviours: []
 --- !u!4 &904211902 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eaf1cd122da734540b6226cf8b854763,
@@ -21078,6 +21129,7 @@ MonoBehaviour:
   numberOfLigthsText: {fileID: 1598795422}
   currentEnergy: 0
   decreaseRate: 2.25
+  decreaseRateTable: 0
   EnergyBarSlider: {fileID: 1210845796}
 --- !u!114 &1210845796
 MonoBehaviour:
@@ -28125,6 +28177,7 @@ MonoBehaviour:
   wires: 0
   hasID: 0
   isPlayerControl: 0
+  playersNumber: 0
   vp: {fileID: 639121600}
 --- !u!4 &1652428360
 Transform:

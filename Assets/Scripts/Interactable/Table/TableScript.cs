@@ -16,6 +16,7 @@ public class TableScript : NetworkBehaviour
 
 
     TableState tableState;
+
     [SerializeField]
     EnergyBar energyBar;
     
@@ -43,11 +44,12 @@ public class TableScript : NetworkBehaviour
         switch (tableState)
         {
             case TableState.NeedsFixing:
+                Debug.Log($"Increasing energy because it's broken   {energyBar.decreaseRate}");
+                energyBar.decreaseRateTable = 0.75f;
                 NeedsFixing();
-                Debug.Log("Increasing energy because it's broken");
-                energyBar.decreaseRate += 0.75f;
                 ; break;
             case TableState.Fixed:
+                energyBar.decreaseRateTable = 0.25f;
                 Fixed();
                 ; break;
             case TableState.SendingSignals:
@@ -59,6 +61,7 @@ public class TableScript : NetworkBehaviour
     }
     void NeedsFixing()
     {
+        
         damagedParticleSystem.Play();
         if (isPlayerNear)
         {
@@ -76,7 +79,7 @@ public class TableScript : NetworkBehaviour
     void SendingSignals()
     {
         GameManager.isTableFixed = true;
-        damagedParticleSystem.Stop();
+        
         timer.SetActive(true);
     }
     //CheckID
@@ -113,7 +116,6 @@ public class TableScript : NetworkBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNear = true;
-            Debug.Log($"{isPlayerNear} no oxygen");
         }
        
     }
@@ -122,7 +124,6 @@ public class TableScript : NetworkBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerNear = false;
-            Debug.Log($"{isPlayerNear} no oxygen");
         }
        
     }

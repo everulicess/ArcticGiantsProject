@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Video;
 using Fusion;
 
-public class IntroVideoController : MonoBehaviour
+public class IntroVideoController : NetworkBehaviour
 {
 
     GameBehaviour gameManager;
@@ -15,6 +15,7 @@ public class IntroVideoController : MonoBehaviour
     [SerializeField]
     GameObject canvasUI;
 
+    
     private void Awake()
     {
         gameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
@@ -26,8 +27,7 @@ public class IntroVideoController : MonoBehaviour
         canvasUI.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void FixedUpdateNetwork()
     {
         //Debug.Log($"this is the frame: {videoPlayer.frame} and this is the FRAME COUNT {videoPlayer.frameCount}");
         Invoke("CheckIfVideoIsPlaying", 2);

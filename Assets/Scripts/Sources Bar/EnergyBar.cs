@@ -10,6 +10,7 @@ public class EnergyBar : MonoBehaviour
     float maxEnergy = 675f;
     public float currentEnergy;
     public float decreaseRate = 2.25f;
+    public float decreaseRateTable;
     //float energyDecreaseRateWithLightsOn = 2f;
 
 
@@ -38,7 +39,7 @@ public class EnergyBar : MonoBehaviour
         }
         // Decrease Energy faster if lights are on
         //currentEnergy += (/*(energyDecreaseRateWithLightsOn * amountOfLightsOn)*/ +decreaseRate) * Time.deltaTime;
-        currentEnergy -= decreaseRate * Time.deltaTime;
+        currentEnergy -= (decreaseRate+decreaseRateTable) * Time.deltaTime;
 
         EnergyBarSlider.value = currentEnergy;
 

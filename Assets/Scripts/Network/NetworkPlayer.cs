@@ -9,10 +9,12 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
 
     public Transform playerModel;
 
-
+    GameBehaviour gameManager;
 
     public override void Spawned()
     {
+        gameManager = FindObjectOfType<GameBehaviour>();
+        gameManager.playersNumber++;
         if (Object.HasInputAuthority)
         {
             Local = this;

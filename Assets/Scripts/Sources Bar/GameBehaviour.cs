@@ -34,6 +34,7 @@ public class GameBehaviour : MonoBehaviour
 
     //Control over the player
     public bool isPlayerControl = false;
+    public int playersNumber;
 
     //Booleans gameFlow
     [Networked]
@@ -48,7 +49,7 @@ public class GameBehaviour : MonoBehaviour
     public bool isSolarPanels { get; set; } = false;
 
     //GameStates
-    GameState gameState = GameState.PlayingVideo;
+    GameState gameState = GameState.WaitingForPlayerLoaded;
 
     enum GameState
     {
@@ -69,7 +70,7 @@ public class GameBehaviour : MonoBehaviour
     //}
     private void Update()
     {
-        
+        Debug.Log($"THIS IS THE NUMBER OF PLAYERS IN THE SESSION {playersNumber}");   
         switch (gameState)
         {
             case GameState.WaitingForPlayerLoaded:
@@ -98,7 +99,11 @@ public class GameBehaviour : MonoBehaviour
     //WaitingForPlayerLoaded
     public void PlayersLoaded()
     {
-        gameState = GameState.PlayingVideo;
+        if (playersNumber == 2)
+        {
+            gameState = GameState.PlayingVideo;
+        }
+        
     }
 
     //Playing introduction video
@@ -108,6 +113,7 @@ public class GameBehaviour : MonoBehaviour
     {
         isPlayerControl = false;
         vp.SetActive(true);
+        vp.GetComponent<IntroVideoController>().PlayIntroVideo();
         if (isVideoFinished)
         {
             isPlayerControl = true;

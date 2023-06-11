@@ -37,7 +37,7 @@ public class DoorInteraction : DoorOpening
         if (characterMovementHandler.isPlayerInteracting)
         {
 
-            Debug.Log("Player is interacting");
+            //Debug.Log("Player is interacting");
             isInteracting = true;
             characterMovementHandler.isPlayerInteracting = false;
         }
