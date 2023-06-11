@@ -1,27 +1,30 @@
 using Fusion;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DoorOpening : NetworkBehaviour
 {
     [SerializeField]
     GameObject[] doors;
-
+    
+    EnergyBar energyBar;
 
     [Networked]
     public bool isDoorOpened { get; set; }
-
+    private void Start()
+    {
+        energyBar = FindObjectOfType<EnergyBar>();
+    }
     //public bool isInteracting;
     //public bool isPlayerNear; 
-    
+
 
     //CheckIfPlayerNear playerNear;
 
     int numberOfDoors;
-    private void Start()
-    {
-    }
-    public override void FixedUpdateNetwork()
-    {
+   
+    //public override void FixedUpdateNetwork()
+    //{
         //if (isPlayerNear)
         //{
         //    if (!characterMovementHandler)
@@ -76,11 +79,12 @@ public class DoorOpening : NetworkBehaviour
             //}
        // }
 
-    }
+    //}
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void OpenDoorRPC()
     {
-        
+        //Decrease 1 per open door
+        energyBar.decreaseRate += 1f;
         foreach (var doors in doors)
         {
             //isInteracting = false;
@@ -96,7 +100,8 @@ public class DoorOpening : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void CloseDoorRPC()
     {
-        
+        //Stop consuming energy
+        energyBar.decreaseRate -= 1f;
         foreach (var doors in doors)
         {
             //isInteracting = false;
