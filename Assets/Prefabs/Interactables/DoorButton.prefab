@@ -51,6 +51,9 @@ MonoBehaviour:
   doors:
   - {fileID: 0}
   - {fileID: 0}
+  buttonColors:
+  - {fileID: 2100000, guid: 6a193e612b5f61440b332a97453730fc, type: 2}
+  - {fileID: 2100000, guid: fa4094559f2bff740bd37e9ae1db19b1, type: 2}
   _isDoorOpened: 0
 --- !u!65 &6257581749892529342
 BoxCollider:
@@ -209,3 +212,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 788893186738976785, guid: 0c6f75c46fa067449bfc0451dbf048a6, type: 3}
+--- !u!1 &7545294239638830323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6821887585681450876, guid: 0c6f75c46fa067449bfc0451dbf048a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 3898555695331122063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6033930389418460957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7545294239638830323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1edf69f058e4794fb425bc2daa46831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonColors:
+  - {fileID: 2100000, guid: fa4094559f2bff740bd37e9ae1db19b1, type: 2}
+  - {fileID: 2100000, guid: 6a193e612b5f61440b332a97453730fc, type: 2}

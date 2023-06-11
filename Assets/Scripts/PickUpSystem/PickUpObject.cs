@@ -50,7 +50,7 @@ public class PickUpObject : MonoBehaviour
 
     public void PickUp()
     {
-        if (Input.GetMouseButtonDown(0))//(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetMouseButtonDown(0)||Input.GetKeyDown(KeyCode.F))
         {
             int x = Screen.width / 2;
             int y = Screen.height / 2;
@@ -84,7 +84,7 @@ public class PickUpObject : MonoBehaviour
     void CheckDrop()
     {
         
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)|| Input.GetKeyDown(KeyCode.F))
         {
             
             GameManager.isPlayerControl = true;

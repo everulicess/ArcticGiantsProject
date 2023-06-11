@@ -24,22 +24,13 @@ public class CharacterMovementHandler : NetworkBehaviour
     private void Awake()
     {
 
-        if (SceneManager.GetActiveScene().name == "New modeled")
-        {
-            gameManager = FindObjectOfType<GameBehaviour>();
-            pickUpObject = GetComponent<PickUpObject>();
-
-        }
-
+       
+        gameManager = FindObjectOfType<GameBehaviour>();
+        pickUpObject = GetComponent<PickUpObject>();
 
         networkCharacterControllerPrototypeCustom = GetComponent<NetworkCharacterControllerPrototypeCustom>();
         localCamera = GetComponentInChildren<Camera>();
         pickUpObject = GetComponent<PickUpObject>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     public override void FixedUpdateNetwork()

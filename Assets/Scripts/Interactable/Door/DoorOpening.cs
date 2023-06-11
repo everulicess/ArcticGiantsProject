@@ -9,11 +9,13 @@ public class DoorOpening : NetworkBehaviour
     
     EnergyBar energyBar;
 
+    ChangeButtonColor buttonColor;
     [Networked]
     public bool isDoorOpened { get; set; }
     private void Start()
     {
         energyBar = FindObjectOfType<EnergyBar>();
+        buttonColor = GetComponentInChildren<ChangeButtonColor>();
     }
     //public bool isInteracting;
     //public bool isPlayerNear; 
@@ -83,6 +85,7 @@ public class DoorOpening : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void OpenDoorRPC()
     {
+        buttonColor.ChangeColorRPC("Opened");
         //Decrease 1 per open door
         energyBar.decreaseRate += 1f;
         foreach (var doors in doors)
@@ -100,6 +103,7 @@ public class DoorOpening : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.All)]
     public void CloseDoorRPC()
     {
+        buttonColor.ChangeColorRPC("Closed");
         //Stop consuming energy
         energyBar.decreaseRate -= 1f;
         foreach (var doors in doors)
