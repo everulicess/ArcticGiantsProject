@@ -33,12 +33,19 @@ public class CubePicking : MonoBehaviour
                 {
                     case "wires":
                         gameManager.wires += 1;
+                        Debug.Log($"Wires {gameManager.wires} INCREASED");
                         break;
-                    case "wrench":
-                        gameManager.wrench += 1;
+                    case "pliers":
+                        gameManager.pliers += 1;
+                        Debug.Log($"PLIERS {gameManager.pliers} INCREASED");
                         break;
                     case "screwdriver":
                         gameManager.screwdriver += 1;
+                        Debug.Log($"SCREWDRIVERS {gameManager.screwdriver} INCREASED");
+                        break;
+                    case "ID":
+                        gameManager.hasID = true;
+                        Debug.Log($"ID {gameManager.hasID} INCREASED");
                         break;
                     default:
                         return;

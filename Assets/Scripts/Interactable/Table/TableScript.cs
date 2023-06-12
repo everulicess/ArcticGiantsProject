@@ -65,7 +65,11 @@ public class TableScript : NetworkBehaviour
         damagedParticleSystem.Play();
         if (isPlayerNear)
         {
-            CheckTools();
+            if (Input.GetKey(KeyCode.F))
+            {
+                CheckTools();
+            }
+            
         }
     }
 
@@ -73,7 +77,11 @@ public class TableScript : NetworkBehaviour
     {
         if (isPlayerNear)
         {
-            CheckId();
+            if (Input.GetKey(KeyCode.F))
+            {
+                CheckId();
+            }
+            
         }
     }
     void SendingSignals()
