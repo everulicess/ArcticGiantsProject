@@ -7,6 +7,9 @@ public class OxygenFixingScript : MonoBehaviour
 {
 
     GameBehaviour GameManager;
+    //Particles system
+    [SerializeField]
+    ParticleSystem[] oxygenParticles;
 
     //player near
     bool isPlayerNear = false;
@@ -49,6 +52,11 @@ public class OxygenFixingScript : MonoBehaviour
     //NeedsFixing
     void NeedsFixing()
     {
+        foreach (var particleSystem in oxygenParticles)
+        {
+            particleSystem.Play();
+        }
+        
         //show what is needed to fix the oxygen into the UI
         if (isPlayerNear)
         {
@@ -56,6 +64,10 @@ public class OxygenFixingScript : MonoBehaviour
             {
                 Debug.Log("Fixing oxygen");
                 oxygenState = OxygenState.FixedAndWorking;
+                foreach (var particleSystem in oxygenParticles)
+                {
+                    particleSystem.Stop();
+                }
             }
         }
         

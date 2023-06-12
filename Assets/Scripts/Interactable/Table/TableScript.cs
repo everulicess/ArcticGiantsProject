@@ -103,7 +103,7 @@ public class TableScript : NetworkBehaviour
     void CheckTools()
     {
         Debug.Log("Checking Tools for repairing");
-        int wiresNum = 2; int wrenchNum = 1; int pliersNum = 1; int screwdriverNum = 1;
+        int wiresNum = 3; int wrenchNum = 0; int pliersNum = 1; int screwdriverNum = 0;
         if (GameManager.wires >= wiresNum && GameManager.wrench >= wrenchNum && GameManager.pliers >= pliersNum && GameManager.screwdriver >= screwdriverNum )
         {
             GameManager.wires -= wiresNum;
