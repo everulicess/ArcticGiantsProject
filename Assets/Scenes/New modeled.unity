@@ -23507,6 +23507,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oxygenParticles: []
+  repairIcon: {fileID: 45515401100583945, guid: a817591a8ef85044cb08c40f5a6c948a,
+    type: 3}
+  iconHeight: 1
 --- !u!136 &796834525
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -25353,6 +25356,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
   timer: {fileID: 2009258899}
+  repairIcon: {fileID: 45515401100583945, guid: a817591a8ef85044cb08c40f5a6c948a,
+    type: 3}
+  iconHeight: 1
   damagedParticleSystem: {fileID: 689527167}
   energyBar: {fileID: 1210845795}
   _TableIsFixed: 0
@@ -29612,7 +29618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1084355217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30420,6 +30426,8 @@ MonoBehaviour:
   oxygenParticles:
   - {fileID: 27516755}
   - {fileID: 1790611636}
+  repairIcon: {fileID: 0}
+  iconHeight: 1
 --- !u!65 &1144003159
 BoxCollider:
   m_ObjectHideFlags: 0

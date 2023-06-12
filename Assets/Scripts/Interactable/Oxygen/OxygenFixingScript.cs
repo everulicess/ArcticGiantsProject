@@ -10,6 +10,11 @@ public class OxygenFixingScript : MonoBehaviour
     //Particles system
     [SerializeField]
     ParticleSystem[] oxygenParticles;
+    [SerializeField]
+    GameObject repairIcon;
+
+    [SerializeField]
+    float iconHeight = 1.0f;
 
     //player near
     bool isPlayerNear = false;
@@ -30,6 +35,11 @@ public class OxygenFixingScript : MonoBehaviour
     {
         GameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
         oxygenState = OxygenState.NeedsFixing;
+
+        if (repairIcon != null)
+        {
+            repairIcon.transform.position = transform.position + new Vector3(0, iconHeight, 0);
+        }
     }
 
     // Update is called once per frame
@@ -69,6 +79,11 @@ public class OxygenFixingScript : MonoBehaviour
                 foreach (var particleSystem in oxygenParticles)
                 {
                     particleSystem.Stop();
+                }
+
+                if (repairIcon != null)
+                {
+                    repairIcon.SetActive(false);
                 }
             }
         }

@@ -8,6 +8,13 @@ public class TableScript : NetworkBehaviour
     [SerializeField]
     GameObject timer;
 
+    //repair Icon
+    [SerializeField]
+    GameObject repairIcon;
+
+    [SerializeField]
+    float iconHeight = 2.0f;
+
     //particles
     [SerializeField]
     ParticleSystem damagedParticleSystem;
@@ -36,6 +43,11 @@ public class TableScript : NetworkBehaviour
     {
         GameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
         tableState = TableState.NeedsFixing;
+
+        if (repairIcon != null)
+        {
+            repairIcon.transform.position = transform.position + new Vector3(0, iconHeight, 0);
+        }
     }
 
     // Update is called once per frame
@@ -115,6 +127,11 @@ public class TableScript : NetworkBehaviour
 
             damagedParticleSystem.Stop();
             Debug.Log("StateFixedTable");
+
+            if (repairIcon != null)
+            {
+                repairIcon.SetActive(false);
+            }
         }
     }
 
