@@ -21,24 +21,32 @@ public class IntroVideoController : NetworkBehaviour
         gameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
     }
     // Start is called before the first frame update
-    void Start()
+    //void Start()
+    //{
+    //    //Debug.Log("UI disabled");
+    //    //canvasUI.SetActive(false);
+    //}
+    private void OnEnable()
     {
-        Debug.Log("UI disabled");
-        canvasUI.SetActive(false);
+        PlayIntroVideo();
     }
 
     public override void FixedUpdateNetwork()
     {
         //Debug.Log($"this is the frame: {videoPlayer.frame} and this is the FRAME COUNT {videoPlayer.frameCount}");
-        Invoke("CheckIfVideoIsPlaying", 2);
-        
+        if (videoPlayer.isPlaying)
+        {
+            if (!gameManager.isVideoFinished)
+            {
+                CheckIfVideoIsPlaying();
+            }
+        }
+
 
     }
 
     void CheckIfVideoIsPlaying()
     {
-        var player = GameObject.FindWithTag("Player");
-        var camera = GameObject.FindObjectOfType<Camera>();
         //Debug.Log("Checking is the video  is playing");
         if (videoPlayer.isPlaying)
         {
@@ -53,16 +61,18 @@ public class IntroVideoController : NetworkBehaviour
         {
             //player.GetComponent<CharacterController>().enabled = true;
             //camera.GetComponent<LocalCameraHandler>().enabled = true;
+            gameManager.isVideoFinished = true;
             canvasUI.SetActive(true);
             this.gameObject.SetActive(false);
-
-            gameManager.isVideoFinished = true;
+            
+            
         }
     }
     public void PlayIntroVideo()
     {
-        this.gameObject.SetActive(true);
         videoPlayer.Play();
+        
+        
     }
     
 }

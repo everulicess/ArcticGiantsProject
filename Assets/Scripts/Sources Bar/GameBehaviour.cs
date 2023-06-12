@@ -9,17 +9,17 @@ using UnityEditor;
 
 public class GameBehaviour : MonoBehaviour
 {
-    //This comment is for pushing to see if lolo can have what i have from the GitHub
     //Rescue timer
     [SerializeField]
     Timer timeUntilRes;
     //Resources
     [SerializeField]
     Slider oxygenBar;
-
     [SerializeField]
     Slider energyBar;
 
+    [SerializeField]
+    Canvas waitingPlayerCanvas;
     //Lights
     public int numberOfLightsOn = 9;
 
@@ -70,14 +70,14 @@ public class GameBehaviour : MonoBehaviour
     //}
     private void Update()
     {
-        Debug.Log($"THIS IS THE NUMBER OF PLAYERS IN THE SESSION {playersNumber}");   
+        //Debug.Log($"THIS IS THE NUMBER OF PLAYERS IN THE SESSION {playersNumber}");   
         switch (gameState)
         {
             case GameState.WaitingForPlayerLoaded:
                 PlayersLoaded();
                 ;break;
             case GameState.PlayingVideo:
-                PlayingVideo(vp);
+                PlayingVideo();
                 break;
             case GameState.RepairingStuff:
                 RepairingStuff();
@@ -99,6 +99,8 @@ public class GameBehaviour : MonoBehaviour
     //WaitingForPlayerLoaded
     public void PlayersLoaded()
     {
+        isPlayerControl = false;
+        waitingPlayerCanvas.enabled = true;
         if (playersNumber == 2)
         {
             gameState = GameState.PlayingVideo;
@@ -109,25 +111,28 @@ public class GameBehaviour : MonoBehaviour
     //Playing introduction video
     //videoPlayer
     public GameObject vp;
-    void PlayingVideo(GameObject vp)
+    void PlayingVideo()
     {
-        isPlayerControl = false;
+        waitingPlayerCanvas.enabled = false;
         vp.SetActive(true);
-        vp.GetComponent<IntroVideoController>().PlayIntroVideo();
-        if (isVideoFinished)
-        {
-            isPlayerControl = true;
-            vp.SetActive(false);
-            Debug.Log("VIDEO FINISHED");
-            gameState = GameState.RepairingStuff;
-        }
+        //vp.GetComponent<IntroVideoController>().PlayIntroVideo();
+        Invoke("CloseVideo",26);
+    }
+
+    //Close Video Interface
+    void CloseVideo()
+    {
+        isPlayerControl = true;
+        vp.SetActive(false);
+        Debug.Log("VIDEO FINISHED");
+        gameState = GameState.RepairingStuff;
     }
 
     //Repairing phase
    
     void RepairingStuff()
     {
-        
+        Debug.Log("Change State waiting for rescue");
         OxygenCheck();
         if (isTableFixed)
         {
