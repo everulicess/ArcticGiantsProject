@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1805321529208634125}
   - component: {fileID: 1805321529208634130}
   - component: {fileID: 1805321529208634131}
+  - component: {fileID: 4046087206866064856}
   m_Layer: 0
   m_Name: Screwdriver
   m_TagString: Untagged
@@ -76,6 +77,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exclamationMarkPrefab: {fileID: 4356174817703000859}
+--- !u!114 &4046087206866064856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805321529208634128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281fc6563d3bd7942b1e9532f4e2e6fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactText: {fileID: 2457203334273274427}
+  stringText: Pick Up [E]
+  isCarrying: 0
 --- !u!1 &8909016826952519696
 GameObject:
   m_ObjectHideFlags: 0

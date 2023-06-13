@@ -70,7 +70,7 @@ public class OxygenFixingScript : MonoBehaviour
         //show what is needed to fix the oxygen into the UI
         if (isPlayerNear)
         {
-            int wiresNum = 1; int wrenchNum = 0; int pliersNum = 1; int screwdriverNum = 1;
+            int wiresNum = 1; /*int wrenchNum = 0;*/ int pliersNum = 1; int screwdriverNum = 1;
 
             if (GameManager.wires >= wiresNum && GameManager.pliers >= pliersNum && GameManager.screwdriver >= screwdriverNum)
             {
