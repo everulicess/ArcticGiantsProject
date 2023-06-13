@@ -6,7 +6,7 @@ using TMPro;
 
 public class OxygenBar : MonoBehaviour
 {
-    float maxOxygen = 300f;
+    float maxOxygen = 360f;
     public float currentOxygen;
     public float decreaseRate;
 
