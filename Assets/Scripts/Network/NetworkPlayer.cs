@@ -15,7 +15,7 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
     {
         gameManager = FindObjectOfType<GameBehaviour>();
 
-        
+        gameManager.playersNumber++;
         if (Object.HasInputAuthority)
         {
             Local = this;
@@ -44,7 +44,7 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
 
         //Makes it easy to differenciate players
         transform.name = $"P_{Object.Id}";
-        gameManager.playersNumber++;
+        
 
     }
     
