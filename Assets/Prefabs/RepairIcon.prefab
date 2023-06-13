@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 268849644125400428}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: RepairIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ PrefabInstance:
     - target: {fileID: 8369328082781950267, guid: 7b0840628ed3d6042a7c337e6067436b,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9182280130194246529, guid: 7b0840628ed3d6042a7c337e6067436b,
         type: 3}
@@ -198,7 +198,7 @@ PrefabInstance:
     - target: {fileID: 2233336105644996661, guid: 995e50a05116f8343afd9e23a5068b97,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 995e50a05116f8343afd9e23a5068b97, type: 3}
