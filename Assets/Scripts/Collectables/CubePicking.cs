@@ -30,8 +30,7 @@ public class CubePicking : NetworkBehaviour
     {
         if (isPlayerNear)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
+            
                 switch (itemName)
                 {
                     case "wires":
@@ -55,7 +54,7 @@ public class CubePicking : NetworkBehaviour
                 }
 
                 this.gameObject.SetActive(false);
-            }
+            
         }
     }
 
