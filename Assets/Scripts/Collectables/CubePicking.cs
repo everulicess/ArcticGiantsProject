@@ -26,7 +26,7 @@ public class CubePicking : NetworkBehaviour
     //    screwdriver
 
     //}
-    public override void FixedUpdateNetwork()
+    public void Update()
     {
         if (isPlayerNear)
         {
