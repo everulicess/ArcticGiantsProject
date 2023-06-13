@@ -14,6 +14,7 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
     public override void Spawned()
     {
         gameManager = FindObjectOfType<GameBehaviour>();
+
         gameManager.playersNumber++;
         if (Object.HasInputAuthority)
         {
