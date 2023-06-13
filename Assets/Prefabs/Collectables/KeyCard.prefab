@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 3852056799885304163}
   - component: {fileID: 4732257311107532883}
   - component: {fileID: 9085197747078918057}
+  - component: {fileID: 3531949731834906023}
   m_Layer: 0
   m_Name: KeyCard
   m_TagString: Untagged
@@ -235,7 +236,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437dad41a002f9e4385cb9885911e3df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   itemName: wires
+  exclamationMark: {fileID: 0}
 --- !u!114 &4732257311107532883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +267,30 @@ MonoBehaviour:
   interactText: {fileID: 4390006318344962855}
   stringText: Pick Up [E]
   isCarrying: 0
+--- !u!114 &3531949731834906023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3659186870085379104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2305
+  NetworkGuid:
+    RawGuidValue: aa4ab6e333b7a7649a97dab05171999a
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 3852056799885304163}
+  SimulationBehaviours: []
 --- !u!1001 &4254412902433881803
 PrefabInstance:
   m_ObjectHideFlags: 0

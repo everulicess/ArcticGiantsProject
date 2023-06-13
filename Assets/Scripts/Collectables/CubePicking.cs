@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
-public class CubePicking : MonoBehaviour
+
+public class CubePicking : NetworkBehaviour
 {
     bool isPlayerNear;
     GameBehaviour gameManager;
     [SerializeField]
     string itemName;
+    [SerializeField]
+    GameObject exclamationMark;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +26,7 @@ public class CubePicking : MonoBehaviour
     //    screwdriver
 
     //}
-    // Update is called once per frame
-    void Update()
+    public override void FixedUpdateNetwork()
     {
         if (isPlayerNear)
         {
@@ -37,15 +40,15 @@ public class CubePicking : MonoBehaviour
                         break;
                     case "pliers":
                         gameManager.pliers += 1;
-                        Debug.Log($"PLIERS {gameManager.pliers} INCREASED");
+                        //Debug.Log($"PLIERS {gameManager.pliers} INCREASED");
                         break;
                     case "screwdriver":
                         gameManager.screwdriver += 1;
-                        Debug.Log($"SCREWDRIVERS {gameManager.screwdriver} INCREASED");
+                        //Debug.Log($"SCREWDRIVERS {gameManager.screwdriver} INCREASED");
                         break;
                     case "ID":
                         gameManager.hasID = true;
-                        Debug.Log($"ID {gameManager.hasID} INCREASED");
+                        //Debug.Log($"ID {gameManager.hasID} INCREASED");
                         break;
                     default:
                         return;
@@ -70,8 +73,7 @@ public class CubePicking : MonoBehaviour
             isPlayerNear = false;
         }
     }
-
-    private void CollectItem(GameObject item)
+    private void CollectItemRPC(GameObject item)
     {
         ItemIndicator indicator = item.GetComponent<ItemIndicator>();
         if (indicator != null)

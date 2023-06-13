@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 247099224750163671}
   - component: {fileID: 1603314550823664249}
   - component: {fileID: 1020915487260862500}
+  - component: {fileID: -7875363859050899042}
   m_Layer: 0
   m_Name: Pliers 1
   m_TagString: Untagged
@@ -69,7 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437dad41a002f9e4385cb9885911e3df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   itemName: pliers
+  exclamationMark: {fileID: 0}
 --- !u!114 &247099224750163671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +143,30 @@ MonoBehaviour:
   interactText: {fileID: 3106184477812870415}
   stringText: Pick Up [E]
   isCarrying: 0
+--- !u!114 &-7875363859050899042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46300927727198357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2305
+  NetworkGuid:
+    RawGuidValue: 69e051127d7c0514e9ecdf201b472aed
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 407929103914611310}
+  SimulationBehaviours: []
 --- !u!1 &7045364896850065816
 GameObject:
   m_ObjectHideFlags: 0
