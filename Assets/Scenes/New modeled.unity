@@ -5923,9 +5923,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69e051127d7c0514e9ecdf201b472aed, type: 3}
---- !u!4 &55289385 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8295399203765843028, guid: 69e051127d7c0514e9ecdf201b472aed,
+--- !u!224 &55289385 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 303615234773734178, guid: 69e051127d7c0514e9ecdf201b472aed,
     type: 3}
   m_PrefabInstance: {fileID: 55289384}
   m_PrefabAsset: {fileID: 0}
@@ -12976,7 +12976,7 @@ PrefabInstance:
     - target: {fileID: 1805321529208634124, guid: eaa66054d9c8f7b4fae745814de5a486,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1805321529208634124, guid: eaa66054d9c8f7b4fae745814de5a486,
         type: 3}
@@ -23508,7 +23508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oxygenParticles: []
   repairIcon: {fileID: 1423084377}
-  iconHeight: 1
+  iconHeight: 0
 --- !u!136 &796834525
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -25357,7 +25357,7 @@ MonoBehaviour:
   _interpolationDataSource: 0
   timer: {fileID: 2009258899}
   repairIcon: {fileID: 1208474506}
-  iconHeight: 1
+  iconHeight: 0
   damagedParticleSystem: {fileID: 689527167}
   energyBar: {fileID: 1210845795}
   _TableIsFixed: 0
@@ -30425,7 +30425,7 @@ MonoBehaviour:
   oxygenParticles:
   - {fileID: 27516755}
   - {fileID: 1790611636}
-  repairIcon: {fileID: 0}
+  repairIcon: {fileID: 1423084377}
   iconHeight: 1
 --- !u!65 &1144003159
 BoxCollider:
@@ -30435,7 +30435,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485775931}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.9219093, y: 1.715961, z: 1.6498833}
@@ -35664,7 +35664,7 @@ PrefabInstance:
     - target: {fileID: 268849644125400428, guid: a817591a8ef85044cb08c40f5a6c948a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32.22394
+      value: 34.093
       objectReference: {fileID: 0}
     - target: {fileID: 268849644125400428, guid: a817591a8ef85044cb08c40f5a6c948a,
         type: 3}
@@ -35674,7 +35674,7 @@ PrefabInstance:
     - target: {fileID: 268849644125400428, guid: a817591a8ef85044cb08c40f5a6c948a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.15786266
+      value: 2.084
       objectReference: {fileID: 0}
     - target: {fileID: 268849644125400428, guid: a817591a8ef85044cb08c40f5a6c948a,
         type: 3}
@@ -39614,6 +39614,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pliers 1
       objectReference: {fileID: 0}
+    - target: {fileID: 303615234773734178, guid: 69e051127d7c0514e9ecdf201b472aed,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7230937799301181485, guid: 69e051127d7c0514e9ecdf201b472aed,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39721,9 +39726,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69e051127d7c0514e9ecdf201b472aed, type: 3}
---- !u!4 &1726436271 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8295399203765843028, guid: 69e051127d7c0514e9ecdf201b472aed,
+--- !u!224 &1726436271 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 303615234773734178, guid: 69e051127d7c0514e9ecdf201b472aed,
     type: 3}
   m_PrefabInstance: {fileID: 1726436270}
   m_PrefabAsset: {fileID: 0}
@@ -50671,8 +50676,8 @@ Transform:
   - {fileID: 55289385}
   - {fileID: 1712701416}
   - {fileID: 192513644}
-  - {fileID: 1726436271}
   - {fileID: 425692303}
+  - {fileID: 1726436271}
   - {fileID: 815767284}
   - {fileID: 3906699850281634170}
   - {fileID: 1289325208}
