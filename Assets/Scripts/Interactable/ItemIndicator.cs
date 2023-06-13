@@ -23,6 +23,7 @@ public class ItemIndicator : MonoBehaviour
         if (exclamationMarkInstance != null)
         {
             Destroy(exclamationMarkInstance);
+            exclamationMarkInstance.SetActive(false);
         }
     }
 }

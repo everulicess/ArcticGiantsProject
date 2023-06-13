@@ -7,6 +7,14 @@ public class OxygenFixingScript : MonoBehaviour
 {
 
     GameBehaviour GameManager;
+    //Particles system
+    [SerializeField]
+    ParticleSystem[] oxygenParticles;
+    [SerializeField]
+    GameObject repairIcon;
+
+    [SerializeField]
+    float iconHeight = 1.0f;
 
     //player near
     bool isPlayerNear = false;
@@ -27,6 +35,11 @@ public class OxygenFixingScript : MonoBehaviour
     {
         GameManager = GameObject.Find("Game_Manager").GetComponent<GameBehaviour>();
         oxygenState = OxygenState.NeedsFixing;
+
+        if (repairIcon != null)
+        {
+            repairIcon.transform.position = transform.position + new Vector3(0, iconHeight, 0);
+        }
     }
 
     // Update is called once per frame
@@ -49,13 +62,29 @@ public class OxygenFixingScript : MonoBehaviour
     //NeedsFixing
     void NeedsFixing()
     {
+        foreach (var particleSystem in oxygenParticles)
+        {
+            particleSystem.Play();
+        }
+        
         //show what is needed to fix the oxygen into the UI
         if (isPlayerNear)
         {
-            if (GameManager.wires >= 1 && GameManager.pliers >= 1 && GameManager.screwdriver >= 1)
+            int wiresNum = 1; int wrenchNum = 0; int pliersNum = 1; int screwdriverNum = 1;
+
+            if (GameManager.wires >= wiresNum && GameManager.pliers >= pliersNum && GameManager.screwdriver >= screwdriverNum)
             {
                 Debug.Log("Fixing oxygen");
                 oxygenState = OxygenState.FixedAndWorking;
+                foreach (var particleSystem in oxygenParticles)
+                {
+                    particleSystem.Stop();
+                }
+
+                if (repairIcon != null)
+                {
+                    repairIcon.SetActive(false);
+                }
             }
         }
         
