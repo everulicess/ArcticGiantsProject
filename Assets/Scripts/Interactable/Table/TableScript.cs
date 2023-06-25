@@ -56,7 +56,7 @@ public class TableScript : NetworkBehaviour
         switch (tableState)
         {
             case TableState.NeedsFixing:
-                Debug.Log($"Increasing energy because it's broken   {energyBar.decreaseRate}");
+                //Debug.Log($"Increasing energy because it's broken   {energyBar.decreaseRate}");
                 energyBar.decreaseRateTable = 0.75f;
                 NeedsFixing();
                 ; break;

@@ -16,10 +16,6 @@ public class MainMenuUIHandler : MonoBehaviour
     [Header("New game session")]
     public TMP_InputField sessionNameInputField;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     void HideAllPanels()
     {
@@ -29,6 +25,18 @@ public class MainMenuUIHandler : MonoBehaviour
         createSessionPanel.SetActive(false);
     }
 
+    public void OnBackButtonClickedListPage()
+    {
+        HideAllPanels();
+
+        playerDetailsPanel.SetActive(true);
+    }
+    public void OnBackButtonClickedCreateNewGamePage()
+    {
+        HideAllPanels();
+
+        sessionBrowserPanel.SetActive(true);
+    }
     public void OnFindGameClicked()
     {
         PlayerPrefs.Save();
